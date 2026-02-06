@@ -1,174 +1,299 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <title>The Wedding Of Khoiril &amp; Nisa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Undangan pernikahan Khoiril & Nisa — informasi acara, galeri, RSVP, dan kado digital." />
-  <meta name="event-date" content="2026-03-24T08:00:00" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#A78BFA" />
+  <title>Undangan Pernikahan</title>
 
-  <!-- Preconnect for Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet" />
+  <!-- SEO / Social -->
+  <meta name="description" content="Undangan pernikahan digital. Simpan tanggalnya & sampai jumpa di hari bahagia kami." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Undangan Pernikahan" />
+  <meta property="og:description" content="Kami mengundang Anda untuk hadir di hari bahagia kami." />
+  <meta property="og:image" content="assets/img/hero.jpg" />
 
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="lock-scroll">
+<body>
+  <!-- Cover / Gate -->
+  <div id="gate" class="gate" aria-modal="true" role="dialog">
+    <div class="gate__bg" aria-hidden="true"></div>
+    <div class="gate__card">
+      <p class="gate__badge">Undangan Pernikahan</p>
+      <h1 class="gate__title"><span id="brandText">F & A</span></h1>
+      <p class="gate__subtitle">Kepada Yth.</p>
+      <h2 class="gate__guest" id="guestName">Tamu Undangan</h2>
+      <p class="gate__hint">Mohon maaf apabila ada kesalahan penulisan nama & gelar.</p>
+      <button id="openBtn" class="btn btn--primary" type="button">
+        Buka Undangan
+      </button>
+      <button id="muteBtnGate" class="btn btn--ghost" type="button" aria-pressed="false">
+        Musik: Off
+      </button>
+    </div>
+  </div>
 
-  <!-- COVER -->
-  <header id="cover" class="cover" role="banner">
-    <div class="glass glass-center" data-aos="fade-up">
-      <p class="small">The Wedding Of</p>
-      <h1>Khoiril &amp; Nisa</h1>
+  <!-- Audio (autoplay dibolehkan setelah klik tombol) -->
+  <audio id="bgm" preload="auto" loop></audio>
 
-      <div class="space"></div>
-
-      <p class="small">Dear,</p>
-      <h3 id="guest-name">Tamu Undangan</h3>
-
-      <button id="openInvitation" type="button" aria-controls="main" aria-expanded="false">Buka Undangan</button>
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a class="logo" href="#home" aria-label="Beranda">
+        <span id="logoBrand">F & A</span>
+      </a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <a href="#couple">Mempelai</a>
+        <a href="#event">Acara</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#wishes">Ucapan</a>
+      </nav>
+      <button id="muteBtn" class="icon-btn" type="button" aria-pressed="false" title="Toggle musik">
+        <span class="icon" aria-hidden="true">♪</span>
+      </button>
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-    <!-- SAMBUTAN -->
-    <section id="sambutan" class="section bg-sambutan hidden" aria-labelledby="sambutan-title">
-      <div class="glass glass-bottom" data-aos="fade-up">
-        <p class="small">The Wedding Of</p>
-        <h1 id="sambutan-title">Khoiril &amp; Nisa</h1>
+  <!-- Main -->
+  <main id="home">
+    <!-- Hero -->
+    <section class="hero section">
+      <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
 
-        <div id="countdown" aria-live="polite" data-target="2026-03-24T08:00:00"></div>
+      <div class="container hero__content">
+        <p class="eyebrow" id="greetingLine">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+        <h2 class="hero__title">
+          <span id="groomShort">Fahri</span> <span class="amp">&</span> <span id="brideShort">Alya</span>
+        </h2>
+        <p class="hero__meta">
+          <span id="eventDateText">Minggu, 16 Agustus 2026</span> • <span id="eventCityText">Guntur</span>
+        </p>
 
-        <button class="secondary" type="button">Simpan ke Kalender</button>
+        <div class="countdown" aria-label="Hitung mundur">
+          <div class="countdown__item"><span id="cdDays">00</span><small>Hari</small></div>
+          <div class="countdown__item"><span id="cdHours">00</span><small>Jam</small></div>
+          <div class="countdown__item"><span id="cdMins">00</span><small>Menit</small></div>
+          <div class="countdown__item"><span id="cdSecs">00</span><small>Detik</small></div>
+        </div>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#event">Lihat Detail Acara</a>
+          <button id="addToCalendar" class="btn btn--ghost" type="button">Simpan ke Kalender</button>
+        </div>
+
+        <p class="hero__to">
+          <span class="muted">Undangan untuk:</span>
+          <strong id="guestNameInline">Tamu Undangan</strong>
+        </p>
       </div>
     </section>
 
-    <!-- MEMPELAI WANITA -->
-    <section class="section mempelai bg-mempelaiwanita hidden" aria-labelledby="mempelai-w-title">
-      <h2 id="mempelai-w-title" class="title-top">MEMPELAI WANITA</h2>
+    <!-- Couple -->
+    <section id="couple" class="section">
+      <div class="container">
+        <h3 class="section__title reveal">Mempelai</h3>
+        <p class="section__desc reveal">
+          Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami.
+        </p>
 
-      <div class="glass mempelai-glass glass-bottom" data-aos="fade-up">
-        <h3>Khoirun Nisa, S.Sos.</h3>
-        <p class="desc">Putri Pertama dari</p>
-        <p class="parent">Bapak Junaidi &amp; Ibu Siti Zulaikho</p>
+        <div class="couple">
+          <article class="person card reveal">
+            <img id="groomPhoto" class="person__photo" src="assets/img/couple-1.jpg" alt="Foto mempelai pria" loading="lazy">
+            <h4 id="groomName">Fahri Habsyi</h4>
+            <p id="groomParents" class="muted">Putra dari Bapak ... & Ibu ...</p>
+            <a id="groomIg" class="link" href="#" target="_blank" rel="noopener">Instagram</a>
+          </article>
 
-        <!-- GANTI LINK INSTAGRAM DI SINI -->
-        <a href="https://www.instagram.com/enchalightmode?igsh=bHFjbmNjcXZ5M3Fv"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="ig-btn">
-          <img src="assets/icon/instagram.svg" alt="Instagram Khoirun Nisa">
-          <span>Instagram</span>
-        </a>
+          <div class="ring reveal" aria-hidden="true">∞</div>
+
+          <article class="person card reveal">
+            <img id="bridePhoto" class="person__photo" src="assets/img/couple-2.jpg" alt="Foto mempelai wanita" loading="lazy">
+            <h4 id="brideName">Alya Putri</h4>
+            <p id="brideParents" class="muted">Putri dari Bapak ... & Ibu ...</p>
+            <a id="brideIg" class="link" href="#" target="_blank" rel="noopener">Instagram</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- MEMPELAI PRIA -->
-    <section class="section mempelai bg-mempelaipria hidden" aria-labelledby="mempelai-m-title">
-      <h2 id="mempelai-m-title" class="title-top">MEMPELAI PRIA</h2>
+    <!-- Event -->
+    <section id="event" class="section section--alt">
+      <div class="container">
+        <h3 class="section__title reveal">Detail Acara</h3>
 
-      <div class="glass mempelai-glass glass-bottom" data-aos="fade-up">
-        <h3>Khoiril Murbaist, S.Sos.</h3>
-        <p class="desc">Putra Pertama dari</p>
-        <p class="parent">Bapak Edi Suyanto &amp; Ibu Lusyati</p>
+        <div class="grid2">
+          <div class="card reveal">
+            <h4>Akad Nikah</h4>
+            <p class="muted" id="akadTime">09.00 - 10.00 WIB</p>
+            <p id="akadPlace"><strong>Masjid ...</strong></p>
+            <p class="muted" id="akadAddress">Jl. ... No. ..., Guntur</p>
+          </div>
 
-        <!-- GANTI LINK INSTAGRAM DI SINI -->
-        <a href="https://www.instagram.com/oridarkmode?utm_source=qr&igsh=MTM1aGpta2p0YWs2NA=="
-           target="_blank"
-           rel="noopener noreferrer"
-           class="ig-btn">
-          <img src="assets/icon/instagram.svg" alt="Instagram Khoiril Murbaist">
-          <span>Instagram</span>
-        </a>
+          <div class="card reveal">
+            <h4>Resepsi</h4>
+            <p class="muted" id="resepsiTime">11.00 - 14.00 WIB</p>
+            <p id="resepsiPlace"><strong>Gedung Serbaguna Bahagia</strong></p>
+            <p class="muted" id="resepsiAddress">Jl. ... No. ..., Guntur</p>
+          </div>
+        </div>
+
+        <div class="map card reveal">
+          <div class="map__top">
+            <h4>Lokasi</h4>
+            <a id="directionBtn" class="btn btn--primary btn--sm" href="#" target="_blank" rel="noopener">
+              Petunjuk Arah
+            </a>
+          </div>
+          <iframe
+            id="mapsFrame"
+            title="Google Maps Lokasi Acara"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            src="">
+          </iframe>
+        </div>
       </div>
     </section>
 
-    <!-- ACARA -->
-    <section class="section bg-acara hidden" aria-labelledby="acara-title">
-      <div class="glass glass-top no-glass" data-aos="fade-up">
-        <h2 id="acara-title">ACARA</h2>
-        <p>Akad &amp; Resepsi</p>
+    <!-- Story -->
+    <section id="story" class="section">
+      <div class="container">
+        <h3 class="section__title reveal">Cerita Kami</h3>
+        <div id="storyWrap" class="timeline"></div>
       </div>
     </section>
 
-    <!-- GALERI -->
-    <section class="section bg-galeri hidden" aria-labelledby="galeri-title">
-      <div class="glass glass-top no-glass" data-aos="fade-up">
-        <h2 id="galeri-title">GALERI</h2>
-        <p>Foto Prewedding</p>
-      </div>
-    </section>
+    <!-- Gallery -->
+    <section id="gallery" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h3 class="section__title reveal">Galeri</h3>
+          <p class="section__desc reveal">Klik foto untuk memperbesar.</p>
+        </div>
 
-    <!-- KISAH CINTA -->
-    <section class="section bg-kisahcinta hidden" aria-labelledby="kisah-title">
-      <div class="glass glass-top no-glass" data-aos="fade-up">
-        <h2 id="kisah-title">KISAH CINTA</h2>
-        <p>Cerita singkat perjalanan kami</p>
+        <div id="galleryGrid" class="gallery reveal"></div>
       </div>
-    </section>
 
-    <!-- KADO DIGITAL -->
-    <section class="section bg-kadodigital hidden" aria-labelledby="kado-title">
-      <div class="glass glass-top no-glass" data-aos="fade-up">
-        <h2 id="kado-title">KADO DIGITAL</h2>
-        <p>Rekening / QRIS</p>
+      <!-- Lightbox -->
+      <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button id="lightboxClose" class="lightbox__close" type="button" aria-label="Tutup">×</button>
+        <img id="lightboxImg" alt="Foto galeri diperbesar" />
       </div>
     </section>
 
     <!-- RSVP -->
-    <section class="section bg-rsvp hidden" aria-labelledby="rsvp-title">
-      <div class="glass glass-top no-glass" data-aos="fade-up">
-        <h2 id="rsvp-title">RSVP</h2>
-        <p>Konfirmasi Kehadiran</p>
+    <section id="rsvp" class="section">
+      <div class="container">
+        <h3 class="section__title reveal">RSVP</h3>
+        <p class="section__desc reveal">Konfirmasi kehadiranmu akan sangat membantu kami.</p>
+
+        <div class="grid2">
+          <form id="rsvpForm" class="card reveal">
+            <label class="field">
+              <span>Nama</span>
+              <input id="rsvpName" type="text" placeholder="Nama kamu" required maxlength="60" />
+            </label>
+
+            <label class="field">
+              <span>Kehadiran</span>
+              <select id="rsvpAttend" required>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option value="Masih Ragu">Masih Ragu</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Jumlah Tamu (Pax)</span>
+              <input id="rsvpPax" type="number" min="1" max="5" value="1" required />
+            </label>
+
+            <label class="field">
+              <span>Pesan</span>
+              <textarea id="rsvpMsg" rows="3" placeholder="Tulis pesan singkat..." maxlength="200"></textarea>
+            </label>
+
+            <button class="btn btn--primary" type="submit">Kirim RSVP</button>
+            <p id="rsvpNote" class="muted small"></p>
+          </form>
+
+          <div class="card reveal">
+            <h4>Ringkasan</h4>
+            <div class="stats">
+              <div><strong id="statTotal">0</strong><span>Total</span></div>
+              <div><strong id="statHadir">0</strong><span>Hadir</span></div>
+              <div><strong id="statTidak">0</strong><span>Tidak</span></div>
+            </div>
+
+            <hr class="sep" />
+
+            <h4>Ucapan Terbaru</h4>
+            <div id="wishPreview" class="wishlist"></div>
+            <a class="link" href="#wishes">Lihat semua ucapan →</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- UCAPAN -->
-    <section class="section bg-ucapan hidden" aria-labelledby="ucapan-title">
-      <div class="glass glass-center no-glass" data-aos="fade-up">
-        <h2 id="ucapan-title">Ucapan Terimakasih</h2>
-        <p>Doa &amp; harapan</p>
+    <!-- Gift -->
+    <section id="gift" class="section section--alt">
+      <div class="container">
+        <h3 class="section__title reveal">Amplop Digital</h3>
+        <p class="section__desc reveal">Doa restu sudah sangat berarti. Jika ingin mengirim hadiah, bisa melalui:</p>
+
+        <div id="giftWrap" class="grid2"></div>
+
+        <div class="card reveal">
+          <h4>Kirim Kado</h4>
+          <p class="muted" id="giftAddress">Jl. ... No. ..., Guntur</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wishes -->
+    <section id="wishes" class="section">
+      <div class="container">
+        <h3 class="section__title reveal">Buku Ucapan</h3>
+        <p class="section__desc reveal">Tulis doa dan ucapan terbaikmu.</p>
+
+        <form id="wishForm" class="card reveal">
+          <div class="grid2">
+            <label class="field">
+              <span>Nama</span>
+              <input id="wishName" type="text" placeholder="Nama kamu" required maxlength="60" />
+            </label>
+
+            <label class="field">
+              <span>Ucapan</span>
+              <input id="wishText" type="text" placeholder="Selamat ya..." required maxlength="160" />
+            </label>
+          </div>
+          <button class="btn btn--primary" type="submit">Kirim Ucapan</button>
+          <p class="muted small">Data disimpan di browser kamu (mode statis). Untuk online, aktifkan endpoint.</p>
+        </form>
+
+        <div id="wishList" class="wishlist reveal"></div>
+
+        <footer class="footer">
+          <p class="muted">
+            Terima kasih atas doa & kehadiran Anda.
+          </p>
+          <p class="small muted">Made with ♥ — Template GitHub Pages</p>
+        </footer>
       </div>
     </section>
   </main>
 
-  <!-- MUSIC -->
-  <button id="musicToggle" class="music-toggle hidden" aria-label="Play music" aria-pressed="false">
-    <div class="music-disc" role="img" aria-hidden="true" tabindex="-1">
-      <span class="music-icon">▶</span>
-    </div>
-  </button>
-
-  <audio id="bgMusic" loop aria-label="Musik Latar">
-    <source src="assets/music/music.mp3" type="audio/mpeg" />
-  </audio>
-
-  <footer>
-    design by <strong>@oridarkmode</strong>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
-  <script src="script.js" defer></script>
-  <script>
-    // Inisialisasi AOS setelah DOM siap — aman meskipun AOS belum termuat segera
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.AOS && typeof AOS.init === 'function') {
-        AOS.init();
-      }
-      // Pastikan tombol tidak menyebabkan submit dan aria-expanded diperbarui saat dibuka
-      var openBtn = document.getElementById('openInvitation');
-      if (openBtn) {
-        openBtn.addEventListener('click', function () {
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', String(!expanded));
-        });
-      }
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
