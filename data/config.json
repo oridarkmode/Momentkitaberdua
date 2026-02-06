@@ -1,0 +1,93 @@
+{
+  "site": {
+    "title": "Undangan Pernikahan",
+    "brand": "F & A",
+    "themeColor": "#A78BFA",
+    "locationName": "Gedung Serbaguna Bahagia",
+    "city": "Guntur, Jawa Tengah",
+    "coverImage": "assets/img/hero.jpg",
+    "favicon": "assets/icons/icon-192.png"
+  },
+  "couple": {
+    "groom": {
+      "name": "Fahri Habsyi",
+      "short": "Fahri",
+      "parents": "Putra dari Bapak ... & Ibu ...",
+      "photo": "assets/img/couple-1.jpg",
+      "instagram": "https://instagram.com/"
+    },
+    "bride": {
+      "name": "Alya Putri",
+      "short": "Alya",
+      "parents": "Putri dari Bapak ... & Ibu ...",
+      "photo": "assets/img/couple-2.jpg",
+      "instagram": "https://instagram.com/"
+    }
+  },
+  "event": {
+    "dateISO": "2026-08-16T09:00:00+07:00",
+    "timezoneLabel": "WIB",
+    "akad": {
+      "time": "09.00 - 10.00",
+      "place": "Masjid ...",
+      "address": "Jl. ... No. ..., Guntur"
+    },
+    "resepsi": {
+      "time": "11.00 - 14.00",
+      "place": "Gedung Serbaguna Bahagia",
+      "address": "Jl. ... No. ..., Guntur"
+    },
+    "mapsEmbedUrl": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
+    "mapsDirectionUrl": "https://maps.google.com/?q=-6.200000,106.816666"
+  },
+  "media": {
+    "music": {
+      "src": "assets/audio/song.mp3",
+      "title": "Wedding Song"
+    },
+    "gallery": [
+      "assets/img/gallery-1.jpg",
+      "assets/img/gallery-2.jpg",
+      "assets/img/gallery-3.jpg"
+    ]
+  },
+  "story": [
+    {
+      "date": "2022",
+      "title": "Pertama Bertemu",
+      "text": "Kami dipertemukan di ..."
+    },
+    {
+      "date": "2024",
+      "title": "Lamaran",
+      "text": "Dengan restu keluarga ..."
+    },
+    {
+      "date": "2026",
+      "title": "Hari Bahagia",
+      "text": "Kami memutuskan untuk ..."
+    }
+  ],
+  "gift": {
+    "enable": true,
+    "accounts": [
+      {
+        "bank": "BCA",
+        "name": "Fahri Habsyi",
+        "number": "1234567890"
+      },
+      {
+        "bank": "DANA",
+        "name": "Alya Putri",
+        "number": "081234567890"
+      }
+    ],
+    "addressGift": "Jl. ... No. ..., Guntur"
+  },
+  "rsvp": {
+    "enable": true,
+    "maxPax": 5,
+    "submitMode": "localStorage",
+    "endpointUrl": ""
+  }
+}
