@@ -1,44 +1,46 @@
 {
   "site": {
     "title": "Undangan Pernikahan",
-    "brand": "F & A",
+    "brand": "K & N",
     "themeColor": "#A78BFA",
     "locationName": "Gedung Serbaguna Bahagia",
-    "city": "Guntur, Jawa Tengah",
+    "city": "Jepara, Jawa Tengah",
     "coverImage": "assets/img/hero.jpg",
     "favicon": "assets/icons/icon-192.png"
   },
   "couple": {
-    "groom": {
-      "name": "Fahri Habsyi",
-      "short": "Fahri",
-      "parents": "Putra dari Bapak ... & Ibu ...",
+    "bride": {
+      "name": "Khoirun Nisa",
+      "short": "Nisa",
+      "parents": "Putri dari Bapak Junaidi & Ibu Siti Zulaikho",
       "photo": "assets/img/couple-1.jpg",
       "instagram": "https://instagram.com/"
     },
-    "bride": {
-      "name": "Alya Putri",
-      "short": "Alya",
-      "parents": "Putri dari Bapak ... & Ibu ...",
+    "groom": {
+      "name": "Khoiril Murbaist",
+      "short": "Nisa",
+      "parents": "Putra dari Bapak Edi Suyanto & Ibu Lusyati",
       "photo": "assets/img/couple-2.jpg",
       "instagram": "https://instagram.com/"
     }
   },
   "event": {
-    "dateISO": "2026-08-16T09:00:00+07:00",
+    "dateISO": "2026-03-24T09:00:00+07:00",
     "timezoneLabel": "WIB",
     "akad": {
-      "time": "09.00 - 10.00",
-      "place": "Masjid ...",
+      "time": "12.00 - Selesai",
+      "place": "Masjid Baitul Makmur",
       "address": "Jl. ... No. ..., Guntur"
     },
-    "resepsi": {
-      "time": "11.00 - 14.00",
+    "ngunduh": {
+      "time": "09.00 - Selesai",
       "place": "Gedung Serbaguna Bahagia",
       "address": "Jl. ... No. ..., Guntur"
     },
-    "mapsEmbedUrl": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
-    "mapsDirectionUrl": "https://maps.google.com/?q=-6.200000,106.816666"
+    "mapsEmbedUrlakad": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
+    "mapsDirectionUrlakad": "https://maps.google.com/?q=-6.200000,106.816666"
+    "mapsEmbedUrlngunduh": "https://www.google.com/maps?q=-6.200000,106.516666&output=embed",
+    "mapsDirectionUrlngunduh": "https://maps.google.com/?q=-6.200000,106.516666"
   },
   "media": {
     "music": {
@@ -90,4 +92,5 @@
     "submitMode": "localStorage",
     "endpointUrl": ""
   }
+
 }
