@@ -28,7 +28,7 @@
     <div class="gate__bg" aria-hidden="true"></div>
     <div class="gate__card">
       <p class="gate__badge">Undangan Pernikahan</p>
-      <h1 class="gate__title"><span id="brandText">F & A</span></h1>
+      <h1 class="gate__title"><span id="brandText">K & N</span></h1>
       <p class="gate__subtitle">Kepada Yth.</p>
       <h2 class="gate__guest" id="guestName">Tamu Undangan</h2>
       <p class="gate__hint">Mohon maaf apabila ada kesalahan penulisan nama & gelar.</p>
@@ -48,10 +48,11 @@
   <header class="header">
     <div class="header__inner">
       <a class="logo" href="#home" aria-label="Beranda">
-        <span id="logoBrand">F & A</span>
+        <span id="logoBrand">K & N</span>
       </a>
       <nav class="nav" aria-label="Navigasi utama">
-        <a href="#couple">Mempelai</a>
+        <a href="#couple">Mempelai Wanita</a>
+        <a href="#couple">Mempelai Pria</a>
         <a href="#event">Acara</a>
         <a href="#gallery">Galeri</a>
         <a href="#rsvp">RSVP</a>
@@ -70,12 +71,12 @@
       <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
 
       <div class="container hero__content">
-        <p class="eyebrow" id="greetingLine">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+        <p class="eyebrow" id="greetingLine">The Wedding Of</p>
         <h2 class="hero__title">
-          <span id="groomShort">Fahri</span> <span class="amp">&</span> <span id="brideShort">Alya</span>
+          <span id="groomShort">Khoiril</span> <span class="amp">&</span> <span id="brideShort">Nisa</span>
         </h2>
         <p class="hero__meta">
-          <span id="eventDateText">Minggu, 16 Agustus 2026</span> • <span id="eventCityText">Guntur</span>
+          <span id="eventDateText">Selasa, 24 Maret 2026</span> • <span id="eventCityText">Jepara</span>
         </p>
 
         <div class="countdown" aria-label="Hitung mundur">
@@ -100,26 +101,29 @@
     <!-- Couple -->
     <section id="couple" class="section">
       <div class="container">
-        <h3 class="section__title reveal">Mempelai</h3>
-        <p class="section__desc reveal">
-          Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami.
-        </p>
+        <h3 class="section__title reveal">Mempelai Wanita</h3>
 
         <div class="couple">
           <article class="person card reveal">
-            <img id="groomPhoto" class="person__photo" src="assets/img/couple-1.jpg" alt="Foto mempelai pria" loading="lazy">
-            <h4 id="groomName">Fahri Habsyi</h4>
-            <p id="groomParents" class="muted">Putra dari Bapak ... & Ibu ...</p>
-            <a id="groomIg" class="link" href="#" target="_blank" rel="noopener">Instagram</a>
-          </article>
-
-          <div class="ring reveal" aria-hidden="true">∞</div>
-
-          <article class="person card reveal">
-            <img id="bridePhoto" class="person__photo" src="assets/img/couple-2.jpg" alt="Foto mempelai wanita" loading="lazy">
-            <h4 id="brideName">Alya Putri</h4>
-            <p id="brideParents" class="muted">Putri dari Bapak ... & Ibu ...</p>
+            <img id="bridePhoto" class="person__photo" src="assets/img/couple-1.jpg" alt="Foto mempelai wanita" loading="lazy">
+            <h4 id="brideName">Khoirun Nisa</h4>
+            <p id="brideParents" class="muted">Putri dari Bapak Junaidi & Ibu Siti Zulaikho</p>
             <a id="brideIg" class="link" href="#" target="_blank" rel="noopener">Instagram</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <section id="couple" class="section">
+      <div class="container">
+        <h3 class="section__title reveal">Mempelai Pria</h3>
+
+        <div class="couple">
+          <article class="person card reveal">
+            <img id="groomPhoto" class="person__photo" src="assets/img/couple-2.jpg" alt="Foto mempelai pria" loading="lazy">
+            <h4 id="groomName">Khoiril Murbaist</h4>
+            <p id="groomParents" class="muted">Putra dari Bapak Edi Suyanto & Ibu Lusyati</p>
+            <a id="groomIg" class="link" href="#" target="_blank" rel="noopener">Instagram</a>
           </article>
         </div>
       </div>
@@ -132,15 +136,34 @@
 
         <div class="grid2">
           <div class="card reveal">
-            <h4>Akad Nikah</h4>
-            <p class="muted" id="akadTime">09.00 - 10.00 WIB</p>
-            <p id="akadPlace"><strong>Masjid ...</strong></p>
+            <h4>Akad Nikah & Resepsi</h4>
+            <p class="muted" id="akadTime">12.00 - Selesai WIB</p>
+            <p id="akadPlace"><strong>Masjid Baitul Makmur</strong></p>
             <p class="muted" id="akadAddress">Jl. ... No. ..., Guntur</p>
           </div>
+        </div>
 
+        <div class="map card reveal">
+          <div class="map__top">
+            <h4>Lokasi</h4>
+            <a id="directionBtn" class="btn btn--primary btn--sm" href="#" target="_blank" rel="noopener">
+              Petunjuk Arah
+            </a>
+          </div>
+          <iframe
+            id="mapsFrameakad"
+            title="Google Maps Lokasi Acara"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            src="">
+          </iframe>
+        </div>
+
+        <div class="grid2">
           <div class="card reveal">
-            <h4>Resepsi</h4>
-            <p class="muted" id="resepsiTime">11.00 - 14.00 WIB</p>
+            <h4>Ngunduh Mantu</h4>
+            <p class="muted" id="resepsiTime">09.00 - Selesai WIB</p>
             <p id="resepsiPlace"><strong>Gedung Serbaguna Bahagia</strong></p>
             <p class="muted" id="resepsiAddress">Jl. ... No. ..., Guntur</p>
           </div>
@@ -154,7 +177,7 @@
             </a>
           </div>
           <iframe
-            id="mapsFrame"
+            id="mapsFramengunduh"
             title="Google Maps Lokasi Acara"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -288,7 +311,7 @@
           <p class="muted">
             Terima kasih atas doa & kehadiran Anda.
           </p>
-          <p class="small muted">Made with ♥ — Template GitHub Pages</p>
+          <p class="small muted">design by @oridarkmode</p>
         </footer>
       </div>
     </section>
@@ -296,4 +319,7 @@
 
   <script src="js/script.js"></script>
 </body>
+
 </html>
+
+

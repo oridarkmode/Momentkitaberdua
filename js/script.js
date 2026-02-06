@@ -56,17 +56,17 @@ function applyTheme(){
   $("#logoBrand").textContent = c?.site?.brand || "Undangan";
 
   // couple
-  $("#groomName").textContent = c?.couple?.groom?.name || "Mempelai Pria";
-  $("#groomShort").textContent = c?.couple?.groom?.short || "Pria";
-  $("#groomParents").textContent = c?.couple?.groom?.parents || "";
-  $("#groomPhoto").src = c?.couple?.groom?.photo || $("#groomPhoto").src;
-  $("#groomIg").href = c?.couple?.groom?.instagram || "#";
-
   $("#brideName").textContent = c?.couple?.bride?.name || "Mempelai Wanita";
   $("#brideShort").textContent = c?.couple?.bride?.short || "Wanita";
   $("#brideParents").textContent = c?.couple?.bride?.parents || "";
-  $("#bridePhoto").src = c?.couple?.bride?.photo || $("#bridePhoto").src;
+  $("#bridePhoto").src = c?.couple?.bride?.photo || $("#groomPhoto").src;
   $("#brideIg").href = c?.couple?.bride?.instagram || "#";
+
+  $("#groomName").textContent = c?.couple?.groom?.name || "Mempelai Pria";
+  $("#groomShort").textContent = c?.couple?.groom?.short || "Pria";
+  $("#groomParents").textContent = c?.couple?.groom?.parents || "";
+  $("#groomPhoto").src = c?.couple?.groom?.photo || $("#bridePhoto").src;
+  $("#groomIg").href = c?.couple?.groom?.instagram || "#";
 
   // event top line
   $("#eventDateText").textContent = prettyDate(c?.event?.dateISO || new Date().toISOString());
@@ -77,9 +77,9 @@ function applyTheme(){
   $("#akadPlace").innerHTML = `<strong>${safeText(c?.event?.akad?.place || "")}</strong>`;
   $("#akadAddress").textContent = c?.event?.akad?.address || "";
 
-  $("#resepsiTime").textContent = `${c?.event?.resepsi?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
-  $("#resepsiPlace").innerHTML = `<strong>${safeText(c?.event?.resepsi?.place || "")}</strong>`;
-  $("#resepsiAddress").textContent = c?.event?.resepsi?.address || "";
+  $("#ngunduhiTime").textContent = `${c?.event?.ngunduh?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
+  $("#ngunduhPlace").innerHTML = `<strong>${safeText(c?.event?.ngunduh?.place || "")}</strong>`;
+  $("#ngunduhAddress").textContent = c?.event?.ngunduh?.address || "";
 
   // maps
   const mapsFrame = $("#mapsFrame");
@@ -515,4 +515,5 @@ function registerSW(){
     console.error(err);
     alert("Gagal memuat undangan. Pastikan file lengkap dan path benar.");
   }
+
 })();
