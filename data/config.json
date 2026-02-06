@@ -1,31 +1,31 @@
 {
   "site": {
     "title": "Undangan Pernikahan",
-    "brand": "F & A",
+    "brand": "K & N",
     "themeColor": "#A78BFA",
     "locationName": "Gedung Serbaguna Bahagia",
-    "city": "Guntur, Jawa Tengah",
+    "city": "Jepara, Jawa Tengah",
     "coverImage": "assets/img/hero.jpg",
     "favicon": "assets/icons/icon-192.png"
   },
   "couple": {
     "groom": {
-      "name": "Fahri Habsyi",
-      "short": "Fahri",
+      "name": "Khoiril Murbaist",
+      "short": "Ori",
       "parents": "Putra dari Bapak ... & Ibu ...",
       "photo": "assets/img/couple-1.jpg",
       "instagram": "https://instagram.com/"
     },
     "bride": {
-      "name": "Alya Putri",
-      "short": "Alya",
+      "name": "Khoirun Nisa",
+      "short": "Ninis",
       "parents": "Putri dari Bapak ... & Ibu ...",
       "photo": "assets/img/couple-2.jpg",
       "instagram": "https://instagram.com/"
     }
   },
   "event": {
-    "dateISO": "2026-08-16T09:00:00+07:00",
+    "dateISO": "2026-03-24T09:00:00+07:00",
     "timezoneLabel": "WIB",
     "akad": {
       "time": "09.00 - 10.00",
@@ -73,12 +73,12 @@
     "accounts": [
       {
         "bank": "BCA",
-        "name": "Fahri Habsyi",
+        "name": "Khoiril Murbaist",
         "number": "1234567890"
       },
       {
-        "bank": "DANA",
-        "name": "Alya Putri",
+        "bank": "Shopee Pay",
+        "name": "Khoirun Nisa",
         "number": "081234567890"
       }
     ],
@@ -90,4 +90,5 @@
     "submitMode": "localStorage",
     "endpointUrl": ""
   }
+
 }
