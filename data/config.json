@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Undangan Pernikahan",
-    "brand": "K & N",
+    "brand": "K & K",
     "themeColor": "#A78BFA",
     "locationName": "Gedung Serbaguna Bahagia",
     "city": "Jepara, Jawa Tengah",
@@ -11,14 +11,14 @@
   "couple": {
     "groom": {
       "name": "Khoiril Murbaist",
-      "short": "Ori",
+      "short": "Khoiril",
       "parents": "Putra dari Bapak ... & Ibu ...",
       "photo": "assets/img/couple-1.jpg",
       "instagram": "https://instagram.com/"
     },
     "bride": {
       "name": "Khoirun Nisa",
-      "short": "Ninis",
+      "short": "Nisa",
       "parents": "Putri dari Bapak ... & Ibu ...",
       "photo": "assets/img/couple-2.jpg",
       "instagram": "https://instagram.com/"
@@ -92,6 +92,7 @@
   }
 
 }
+
 
 
 
