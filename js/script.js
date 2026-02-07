@@ -122,7 +122,7 @@ function updateMapContent(type) {
     if(mapTitle) mapTitle.innerText = "Lokasi Akad & Resepsi";
     mapFrame.src = event.akad.mapsEmbed;
     dirBtn.href = event.akad.mapsDirection;
-  } else {
+  } else (type === 'ngunduh') {
     if(mapTitle) mapTitle.innerText = "Lokasi Ngunduh Mantu";
     mapFrame.src = event.ngunduh.mapsEmbed;
     dirBtn.href = event.ngunduh.mapsDirection;
@@ -533,6 +533,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
