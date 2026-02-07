@@ -72,14 +72,14 @@ function applyTheme(){
   $("#eventDateText").textContent = prettyDate(c?.event?.dateISO || new Date().toISOString());
   $("#eventCityText").textContent = c?.site?.city || "";
 
-    // event cards
+  // event cards
   $("#akadTime").textContent = `${c?.event?.akad?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
   $("#akadPlace").innerHTML = `<strong>${safeText(c?.event?.akad?.place || "")}</strong>`;
   $("#akadAddress").textContent = c?.event?.akad?.address || "";
 
-  $("#resepsiTime").textContent = `${c?.event?.resepsi?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
-  $("#resepsiPlace").innerHTML = `<strong>${safeText(c?.event?.resepsi?.place || "")}</strong>`;
-  $("#resepsiAddress").textContent = c?.event?.resepsi?.address || "";
+  $("#resepsiTime").textContent = `${c?.event?.ngunduh?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
+  $("#resepsiPlace").innerHTML = `<strong>${safeText(c?.event?.ngunduh?.place || "")}</strong>`;
+  $("#resepsiAddress").textContent = c?.event?.ngunduh?.address || "";
 
   // Inisialisasi peta default
   updateMapContent('akad');
@@ -124,8 +124,8 @@ function updateMapContent(type) {
     dirBtn.href = event.akad.mapsDirection;
   } else {
     if(mapTitle) mapTitle.innerText = "Lokasi Resepsi";
-    mapFrame.src = event.resepsi.mapsEmbed;
-    dirBtn.href = event.resepsi.mapsDirection;
+    mapFrame.src = event.ngunduh.mapsEmbed;
+    dirBtn.href = event.ngunduh.mapsDirection;
   }
 
   // Efek transisi
@@ -533,6 +533,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
