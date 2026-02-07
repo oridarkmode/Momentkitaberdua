@@ -31,7 +31,7 @@
       "time": "09.00 - 10.00",
       "place": "Masjid ...",
       "address": "Jl. ... No. ..., Guntur",
-      "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d330.7679820015971!2d110.83495291539654!3d-6.4280253014493445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e713b1464548e09%3A0x94007fd4c7a808b!2sBumiharjo%2C%20Kec.%20Keling%2C%20Kabupaten%20Jepara%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1770494137410!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>",
+      "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d330.7679820015971!2d110.83495291539654!3d-6.4280253014493445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e713b1464548e09%3A0x94007fd4c7a808b!2sBumiharjo%2C%20Kec.%20Keling%2C%20Kabupaten%20Jepara%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1770494137410!5m2!1sid!2sid",
       "mapsDirection": "https://maps.app.goo.gl/fr2UzpsewL5CJ42L9"
     },
     "resepsi": {
@@ -99,6 +99,7 @@
   }
 
 }
+
 
 
 
