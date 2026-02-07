@@ -231,9 +231,9 @@ function renderGifts(gift){
     const card = document.createElement("div");
     card.className = "card reveal";
     card.innerHTML = `
-      <h4>${safeText(acc.bank || "Rekening")}</h4>
+      <h4>${safeText(acc.bank || "Rekening & Alamat")}</h4>
       <p><strong>${safeText(acc.name || "")}</strong></p>
-      <p class="muted"><span class="mono">${safeText(acc.number || "")}</span></p>
+      <p class="muted"><span class="mono">${safeText(acc.numberandaddress || "")}</span></p>
       <button style="margin:10px 0 0" class="btn btn--primary btn--sm" type="button">Salin Nomor</button>
     `;
     const btn = card.querySelector("button");
@@ -516,3 +516,4 @@ function registerSW(){
   }
 
 })();
+
