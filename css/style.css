@@ -217,9 +217,10 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* Grid */
-.grid3{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+.grid2 {
+  display: flex;
+  flex-wrap: wrap;        /* Agar item turun ke bawah jika tidak muat */
+  justify-content: center; /* KUNCI: Mengetengahkan item di baris terakhir */
   gap: 16px;
 }
 
@@ -427,15 +428,20 @@ input:focus, select:focus, textarea:focus{
   .nav{ display:none; }
   .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
-@media (max-width: 720px){
-  .grid2{ grid-template-columns: 1fr; }
-  .couple{ grid-template-columns: 1fr; }
-  .ring{ margin: 0 auto; }
-  .map iframe{ height: 300px; }
-  .countdown__item{ width: 86px; }
-  .gitem img{ height: 200px; }
+@media (min-width: 1024px) {
+  .grid2 > * {
+    /* (100% / 3 kolom) - kompensasi gap */
+    flex: 0 0 calc(33.333% - 16px); 
+    min-width: 250px; /* Opsional: lebar minimal agar tidak terlalu ciut */
+  }
 }
 
+/* Pengaturan untuk Tablet (2 Kolom) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid2 > * {
+    flex: 0 0 calc(50% - 16px);
+  }
+}
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   .reveal{ transition:none; }
@@ -443,6 +449,7 @@ input:focus, select:focus, textarea:focus{
 }
 }
 ``
+
 
 
 
