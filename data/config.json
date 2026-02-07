@@ -80,11 +80,6 @@
         "bank": "Shopee Pay",
         "name": "Khoirun Nisa",
         "number": "081234567890"
-      },
-      {
-        "bank": "BNI"
-        "name": "Khoiril"
-        "number": "132435446"
       }
     ],
     "addressGift": "Jl. ... No. ..., Guntur"
@@ -97,6 +92,7 @@
   }
 
 }
+
 
 
 
