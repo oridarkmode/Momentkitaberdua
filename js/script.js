@@ -82,10 +82,33 @@ function applyTheme(){
   $("#resepsiAddress").textContent = c?.event?.resepsi?.address || "";
 
   // maps
-  const mapsFrame = $("#mapsFrame");
-  if(mapsFrame) mapsFrame.src = c?.event?.mapsEmbedUrl || "";
-  const directionBtn = $("#directionBtn");
-  if(directionBtn) directionBtn.href = c?.event?.mapsDirectionUrl || "#";
+  function changeMap(type) {
+    const frame = document.getElementById('mapsFrame');
+    const btn = document.getElementById('directionBtn');
+    const title = document.getElementById('mapTitle');
+
+    // Link dari Google Maps (Ganti dengan link asli Anda)
+    const data = {
+      akad: {
+        title: "Lokasi Akad",
+        embed: "https://www.google.com...",
+        link: "https://maps.google.com"
+      },
+      resepsi: {
+        title: "Lokasi Resepsi",
+        embed: "https://www.google.com...",
+        link: "https://maps.google.com"
+      }
+    };
+
+    // Proses penggantian konten
+    frame.src = data[type].embed;
+    btn.href = data[type].link;
+    title.innerText = data[type].title;
+
+    // Opsional: Scroll halus ke area peta setelah klik
+    document.getElementById('mapsFrame').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 
   // story
   renderStory(c?.story || []);
@@ -517,6 +540,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
