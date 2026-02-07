@@ -38,9 +38,8 @@ async function loadConfig(){
   return res.json();
 }
 
-function applyTheme(){
+function applyTheme() {
   const c = state.config;
-  document.title = c?.site?.title || document.title;
 
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   if(metaTheme && c?.site?.themeColor) metaTheme.setAttribute("content", c.site.themeColor);
@@ -73,13 +72,13 @@ function applyTheme(){
   $("#eventCityText").textContent = c?.site?.city || "";
 
   // event cards
-  $("#akadTime").textContent = `${c?.event?.akad?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
-  $("#akadPlace").innerHTML = `<strong>${safeText(c?.event?.akad?.place || "")}</strong>`;
-  $("#akadAddress").textContent = c?.event?.akad?.address || "";
+  $("#akadTime").textContent = `${c?.event?.akad?.time || ""} ${c?.event?.timezoneLabel || ""}`;
+  $("#akadPlace").innerHTML = `<strong>${safeText(c?.event?.akad?.place)}</strong>`;
+  $("#akadAddress").textContent = c?.event?.akad?.address;
 
-  $("#ngunduhTime").textContent = `${c?.event?.ngunduh?.time || ""} ${c?.event?.timezoneLabel || ""}`.trim();
-  $("#ngunduhPlace").innerHTML = `<strong>${safeText(c?.event?.ngunduh?.place || "")}</strong>`;
-  $("#ngunduhAddress").textContent = c?.event?.ngunduh?.address || "";
+  $("#ngunduhTime").textContent = `${c?.event?.ngunduh?.time || ""} ${c?.event?.timezoneLabel || ""}`;
+  $("#ngunduhPlace").innerHTML = `<strong>${safeText(c?.event?.ngunduh?.place)}</strong>`;
+  $("#ngunduhAddress").textContent = c?.event?.ngunduh?.address;
 
   // Inisialisasi peta default
   updateMapContent('akad');
@@ -119,14 +118,15 @@ function updateMapContent(type) {
   if (!event || !mapFrame) return;
 
   if (type === 'akad') {
-    if(mapTitle) mapTitle.innerText = "Lokasi Akad & Resepsi";
+    if(mapTitle) mapTitle.innerText = "Lokasi Akad";
     mapFrame.src = event.akad.mapsEmbed;
     dirBtn.href = event.akad.mapsDirection;
-  } else (type === 'ngunduh') {
+  } else {
     if(mapTitle) mapTitle.innerText = "Lokasi Ngunduh Mantu";
     mapFrame.src = event.ngunduh.mapsEmbed;
     dirBtn.href = event.ngunduh.mapsDirection;
   }
+}
 
   // Efek transisi
   mapFrame.style.opacity = "0.5";
@@ -533,6 +533,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
