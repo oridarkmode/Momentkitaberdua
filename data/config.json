@@ -80,6 +80,11 @@
         "bank": "Shopee Pay",
         "name": "Khoirun Nisa",
         "number": "081234567890"
+      },
+      {
+        "bank": "Kirim Kado",
+        "name": "Khoirun Nisa",
+        "number": "081234567890"
       }
     ],
     "addressGift": "Jl. ... No. ..., Guntur"
@@ -92,6 +97,7 @@
   }
 
 }
+
 
 
 
