@@ -119,11 +119,11 @@ function updateMapContent(type) {
   if (!event || !mapFrame) return;
 
   if (type === 'akad') {
-    if(mapTitle) mapTitle.innerText = "Lokasi Akad";
+    if(mapTitle) mapTitle.innerText = "Lokasi Akad & Resepsi";
     mapFrame.src = event.akad.mapsEmbed;
     dirBtn.href = event.akad.mapsDirection;
   } else {
-    if(mapTitle) mapTitle.innerText = "Lokasi Resepsi";
+    if(mapTitle) mapTitle.innerText = "Lokasi Ngunduh Mantu";
     mapFrame.src = event.ngunduh.mapsEmbed;
     dirBtn.href = event.ngunduh.mapsDirection;
   }
@@ -417,8 +417,8 @@ function wireCalendar(){
     };
 
     const summary = `Pernikahan ${c.couple.groom.short} & ${c.couple.bride.short}`;
-    const location = `${c.event.resepsi.place}, ${c.event.resepsi.address}`;
-    const desc = `Akad: ${c.event.akad.time} - ${c.event.akad.place}\nResepsi: ${c.event.resepsi.time} - ${c.event.resepsi.place}`;
+    const location = `${c.event.akad.place}, ${c.event.akad.address}`;
+    const desc = `Akad: ${c.event.akad.time} - ${c.event.akad.place}\nNgunduh: ${c.event.ngunduh.time} - ${c.event.ngunduh.place}`;
 
     const ics =
 `BEGIN:VCALENDAR
@@ -533,6 +533,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
