@@ -81,48 +81,46 @@ function applyTheme(){
   $("#resepsiPlace").innerHTML = `<strong>${safeText(c?.event?.resepsi?.place || "")}</strong>`;
   $("#resepsiAddress").textContent = c?.event?.resepsi?.address || "";
 
-  // maps
-  // Simpan data event secara global setelah fetch config.json
-  let eventData = {};
-
-  fetch('config.json')
-     .then(response => response.json())
-     .then(data => {
-        eventData = data.event;
-        setupEventUI();
-     });
-
-  function setupEventUI() {
-  // Isi teks detail acara
-     document.getElementById('akadTime').innerText = `${eventData.akad.time} ${eventData.timezoneLabel}`;
-     document.getElementById('akadPlace').innerHTML = `<strong>${eventData.akad.place}</strong>`;
-     document.getElementById('akadAddress').innerText = eventData.akad.address;
-
-     document.getElementById('resepsiTime').innerText = `${eventData.resepsi.time} ${eventData.timezoneLabel}`;
-     document.getElementById('resepsiPlace').innerHTML = `<strong>${eventData.resepsi.place}</strong>`;
-     document.getElementById('resepsiAddress').innerText = eventData.resepsi.address;
-
-  // Set default peta (misalnya akad dulu)
-     updateMapContent('akad');
-  }
-
-  function updateMapContent(type) {
-     const mapFrame = document.getElementById('mapsFrame');
-     const dirBtn = document.getElementById('directionBtn');
+// 1. Taruh fungsi ini di level paling luar (global scope) 
+// agar bisa dipanggil oleh onclick="updateMapContent('...')" di HTML
+function updateMapContent(type) {
+  // Mengambil data dari state global yang sudah diisi loadConfig
+  const event = state.config.event;
+  const mapFrame = document.getElementById('mapsFrame');
+  const dirBtn = document.getElementById('directionBtn');
   
-     if (type === 'akad') {
-        mapFrame.src = eventData.akad.mapsEmbed;
-        dirBtn.href = eventData.akad.mapsDirection;
+  if (!event || !mapFrame) return;
+
+  if (type === 'akad') {
+    mapFrame.src = event.akad.mapsEmbed;
+    dirBtn.href = event.akad.mapsDirection;
   } else {
-        mapFrame.src = eventData.resepsi.mapsEmbed;
-        dirBtn.href = eventData.resepsi.mapsDirection;
+    mapFrame.src = event.resepsi.mapsEmbed;
+    dirBtn.href = event.resepsi.mapsDirection;
   }
 
-  // Animasi sedikit agar user tahu peta berubah
-     mapFrame.classList.add('fade-in');
-     setTimeout(() => mapFrame.classList.remove('fade-in'), 500);
-   }
+  // Animasi
+  mapFrame.classList.add('fade-in');
+  setTimeout(() => mapFrame.classList.remove('fade-in'), 500);
+}
 
+// 2. Di dalam fungsi applyTheme(), cukup panggil inisialisasi awal saja
+function applyTheme() {
+  const c = state.config;
+  // ... kode pengisian nama mempelai dll ...
+
+  // Bagian Event Cards (Gunakan data dari variabel 'c' yang sudah ada)
+  $("#akadTime").textContent = `${c?.event?.akad?.time || ""} ${c?.event?.timezoneLabel || ""}`;
+  $("#akadPlace").innerHTML = `<strong>${safeText(c?.event?.akad?.place)}</strong>`;
+  $("#akadAddress").textContent = c?.event?.akad?.address;
+
+  $("#resepsiTime").textContent = `${c?.event?.resepsi?.time || ""} ${c?.event?.timezoneLabel || ""}`;
+  $("#resepsiPlace").innerHTML = `<strong>${safeText(c?.event?.resepsi?.place)}</strong>`;
+  $("#resepsiAddress").textContent = c?.event?.resepsi?.address;
+
+  // Set tampilan peta default pertama kali tanpa fetch ulang
+  updateMapContent('akad'); 
+  
   // story
   renderStory(c?.story || []);
 
@@ -553,6 +551,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
