@@ -1,4 +1,4 @@
-const CACHE = "glass-invite-v1";
+const CACHE = "glass-invite-final-v1";
 const ASSETS = [
   "./",
   "./index.html",
