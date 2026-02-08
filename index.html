@@ -31,11 +31,9 @@
       <p class="gate__subtitle">Kepada Yth.</p>
       <h2 class="gate__guest" id="guestName">Tamu Undangan</h2>
       <p class="gate__hint">Mohon maaf apabila ada kesalahan penulisan nama & gelar.</p>
-      <button id="openBtn" class="btn btn--primary" type="button">
+      <button id="openBtn" class="btn btn--primary" type="button" 
+        onclick="document.getElementById('gate').style.display='none'; document.getElementById('bgm').play();">
         Buka Undangan
-      </button>
-      <button id="muteBtnGate" class="btn btn--ghost" type="button" aria-pressed="false">
-        Musik: Off
       </button>
     </div>
   </div>
@@ -245,6 +243,7 @@
   <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
