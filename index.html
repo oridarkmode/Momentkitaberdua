@@ -52,28 +52,41 @@
     </button>
   </div>
 
-  <!-- Audio (autoplay dibolehkan setelah klik tombol) -->
-  <audio id="bgm" preload="auto" loop></audio>
-
-  <!-- Header -->
+  <!-- Header Fixed -->
   <header class="header">
     <div class="header__inner">
-      <a class="logo" href="#home" aria-label="Beranda">
+      <!-- KIRI: Tombol Menu (Sidebar) -->
+      <button id="menuBtn" class="icon-btn" aria-label="Buka Menu">
+        <span class="icon">☰</span>
+      </button>
+  
+      <!-- TENGAH: Logo Brand -->
+      <a class="logo-center" href="#home">
         <span id="logoBrand">K & K</span>
       </a>
-      <nav class="nav" aria-label="Navigasi utama">
-        <a href="#couple">Mempelai</a>
-        <a href="#event">Acara</a>
-        <a href="#story">Cerita</a>
-        <a href="#gallery">Galeri</a>
-        <a href="#rsvp">RSVP</a>
-        <a href="#gift">Amplop</a>
-      </nav>
-      <button id="muteBtn" class="icon-btn" type="button" aria-pressed="false" title="Toggle musik">
-        <span class="icon" aria-hidden="true">♪</span>
+  
+      <!-- KANAN: Tombol Musik -->
+      <button id="muteBtn" class="icon-btn" type="button" aria-pressed="false">
+        <span class="icon rotate">♪</span> <!-- Class rotate ditambahkan di CSS -->
       </button>
     </div>
   </header>
+  
+  <!-- Navigasi Samping (Sidebar) -->
+  <div id="sideNav" class="sidebar">
+    <button id="closeMenu" class="sidebar__close">&times;</button>
+    <nav class="sidebar__nav">
+      <a href="#home" class="nav-link">Beranda</a>
+      <a href="#couple" class="nav-link">Mempelai</a>
+      <a href="#event" class="nav-link">Acara</a>
+      <a href="#story" class="nav-link">Cerita Kami</a>
+      <a href="#gallery" class="nav-link">Galeri</a>
+      <a href="#rsvp" class="nav-link">RSVP</a>
+      <a href="#gift" class="nav-link">Amplop Digital</a>
+      <a href="#thanks" class="nav-link">Terima Kasih</a>
+    </nav>
+  </div>
+  <div id="navOverlay" class="nav-overlay"></div>
 
   <!-- Main -->
   <main id="home">
@@ -256,6 +269,7 @@
   <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
