@@ -184,6 +184,14 @@ body {
 
 .btn--primary { background: var(--accent); color: #0b0b10 !important; border: none; }
 /* --- Header Glassmorphism --- */
+#logoBrand, #brandText, .logo-center {
+  color: #ffffff !important;
+}
+
+.icon-btn {
+  color: #ffffff; /* Tombol menu & musik jadi putih */
+}
+
 .logo-center {
   font-family: "Playfair Display", serif;
   font-size: 24px;
@@ -336,6 +344,7 @@ body {
   html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
+
 
 
 
