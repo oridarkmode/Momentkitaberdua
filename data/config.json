@@ -7,9 +7,9 @@
     "bg": "#07060C"
   },
   "backgrounds": {
-  "cover": "assets/img/bg-cover.jpg",
-  "home": "assets/img/bg-home.jpg",
-  "closing": "assets/img/bg-closing.jpg"
+    "cover": "assets/img/bg-cover.jpg",
+    "home": "assets/img/bg-home.jpg",
+    "closing": "assets/img/bg-closing.jpg"
   },
   "guest": {
     "paramName": "to",
@@ -44,29 +44,36 @@
   },
   "events": [
     {
-      "type": "Akad Nikah",
+      "type": "Akad & Resepsi",
       "dateText": "Minggu, 16 Agustus 2026",
-      "timeText": "09.00 - 10.00 WIB",
-      "place": "Masjid ...",
-      "address": "Jl. ... No. ..., Guntur",
-      "mapEmbed": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
-      "mapDirection": "https://maps.google.com/?q=-6.200000,106.816666"
-    },
-    {
-      "type": "Resepsi",
-      "dateText": "Minggu, 16 Agustus 2026",
-      "timeText": "11.00 - 14.00 WIB",
-      "place": "Gedung Serbaguna Bahagia",
-      "address": "Jl. ... No. ..., Guntur",
+      "items": [
+        {
+          "label": "Akad",
+          "timeText": "09.00 - 10.00 WIB",
+          "place": "Masjid ...",
+          "address": "Jl. ... No. ..., Guntur"
+        },
+        {
+          "label": "Resepsi",
+          "timeText": "11.00 - 14.00 WIB",
+          "place": "Gedung Serbaguna Bahagia",
+          "address": "Jl. ... No. ..., Guntur"
+        }
+      ],
       "mapEmbed": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
       "mapDirection": "https://maps.google.com/?q=-6.200000,106.816666"
     },
     {
       "type": "Ngunduh Mantu",
       "dateText": "Minggu, 23 Agustus 2026",
-      "timeText": "10.00 - 13.00 WIB",
-      "place": "Kediaman Mempelai Pria",
-      "address": "Jl. ... No. ..., Guntur",
+      "items": [
+        {
+          "label": "Ngunduh Mantu",
+          "timeText": "10.00 - 13.00 WIB",
+          "place": "Kediaman Mempelai Pria",
+          "address": "Jl. ... No. ..., Guntur"
+        }
+      ],
       "mapEmbed": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
       "mapDirection": "https://maps.google.com/?q=-6.200000,106.816666"
     }
@@ -106,19 +113,25 @@
     "enabled": true,
     "options": [
       {
-        "label": "Transfer Bank (BCA)",
+        "label": "Transfer Bank",
         "name": "Fahri Habsyi",
-        "value": "1234567890"
+        "value": "1234567890",
+        "logo": "assets/img/banks/bank-placeholder.svg",
+        "note": "BCA"
       },
       {
-        "label": "E-Wallet (DANA)",
+        "label": "E-Wallet",
         "name": "Alya Putri",
-        "value": "081234567890"
+        "value": "081234567890",
+        "logo": "assets/img/banks/wallet-placeholder.svg",
+        "note": "DANA"
       },
       {
         "label": "Alamat Kado",
         "name": "Rumah",
-        "value": "Jl. ... No. ..., Guntur"
+        "value": "Jl. ... No. ..., Guntur",
+        "logo": "assets/img/banks/gift-placeholder.svg",
+        "note": "Pengiriman"
       }
     ]
   },
@@ -132,11 +145,16 @@
     "mode": "localStorage",
     "endpointUrl": ""
   },
+  "sheet": {
+    "enabled": true,
+    "mode": "appsScript",
+    "postEndpoint": "ISI_DENGAN_URL_WEB_APP_APPS_SCRIPT",
+    "readMode": "gviz",
+    "spreadsheetId": "ISI_ID_SHEET",
+    "sheetName": "Wishes"
+  },
   "closing": {
     "title": "Terima Kasih",
     "desc": "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu."
   }
-
 }
-
-
