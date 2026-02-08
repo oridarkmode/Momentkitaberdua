@@ -84,17 +84,33 @@ function toggleMusic() {
 // Pasang event listener saat Buka Undangan diklik
 const openBtn = document.getElementById("openBtn");
 if (openBtn) {
-  openBtn.addEventListener("click", () => {
+  openBtn.onclick = function() {
+    // 1. Sembunyikan Cover
+    document.getElementById("gate").classList.add("gate--hidden");
+    
+    // 2. Putar Musik
     const bgm = document.getElementById("bgm");
     if (bgm) {
       bgm.play().then(() => {
-        isMusicPlaying = true;
-        document.body.classList.add("playing");
-      }).catch(e => console.log("Autoplay dicegah:", e));
+        document.body.classList.add("playing"); // Jalankan animasi putar ♪
+      }).catch(e => console.log("Musik diblokir browser:", e));
     }
-    // Sembunyikan gate
-    document.getElementById("gate").classList.add("gate--hidden");
-  });
+  };
+}
+
+// Fungsi Toggle Musik di Header
+const muteBtn = document.getElementById("muteBtn");
+if (muteBtn) {
+  muteBtn.onclick = () => {
+    const bgm = document.getElementById("bgm");
+    if (bgm.paused) {
+      bgm.play();
+      document.body.classList.add("playing");
+    } else {
+      bgm.pause();
+      document.body.classList.remove("playing");
+    }
+  };
 }
 
 // Logic Animasi Musik (Update fungsi muteBtn Anda)
@@ -271,5 +287,6 @@ function renderGifts(gift){
     wrap.appendChild(card);
   });
 }
+
 
 
