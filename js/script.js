@@ -1,9 +1,13 @@
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(registrations => {
-    for (let registration of registrations) { registration.unregister(); }
-  });
-}
+const $ = (s, p=document) => p.querySelector(s);
+const $$ = (s, p=document) => [...p.querySelectorAll(s)];
 
+const state = {
+  config: null,
+  audioEnabled: false,
+  muted: true
+};
+
+// Helper Aman: Isi teks hanya jika elemennya ada
 const setIfExist = (id, content, isHtml = false) => {
   const el = document.getElementById(id);
   if (el) {
@@ -34,7 +38,7 @@ async function loadConfig(){
   return res.json();
 }
 
-// --- FUNGSI UPDATE PETA (GLOBAL) ---
+// --- FUNGSI UPDATE PETA ---
 function updateMapContent(type) {
   const event = state.config?.event;
   const mapFrame = document.getElementById('mapsFrame');
@@ -58,106 +62,39 @@ function updateMapContent(type) {
   }, 300);
 }
 
+// --- FUNGSI APPLY THEME ---
 function applyTheme() {
   const c = state.config;
   if(!c) return;
-  }
-
-  const hero = $("#heroBg");
-  if(hero && c?.site?.coverImage) hero.style.backgroundImage = `url("${c.site.coverImage}")`;
 
   setIfExist("brandText", c.site?.brand);
   setIfExist("logoBrand", c.site?.brand);
-
-  // Couple
   setIfExist("groomName", c.couple?.groom?.name);
   setIfExist("groomShort", c.couple?.groom?.short);
-  $("#groomParents").textContent = c?.couple?.groom?.parents;
-  $("#groomPhoto").src = c?.couple?.groom?.photo || $("#groomPhoto").src;
-  $("#groomIg").href = c?.couple?.groom?.instagram || "#";
-
   setIfExist("brideName", c.couple?.bride?.name);
   setIfExist("brideShort", c.couple?.bride?.short);
-  $("#brideParents").textContent = c?.couple?.bride?.parents;
-  $("#bridePhoto").src = c?.couple?.bride?.photo || $("#bridePhoto").src;
-  $("#brideIg").href = c?.couple?.bride?.instagram || "#";
 
-  // Event
   const tz = c.event?.timezoneLabel || "";
-
   setIfExist("eventDateText", prettyDate(c.event?.dateISO));
   setIfExist("eventCityText", c.site?.city);
 
-  // Bagian Ngunduh
+  // Detail Akad
   setIfExist("akadTime", `${c.event?.akad?.time || ""} ${tz}`);
   setIfExist("akadPlace", `<strong>${c.event?.akad?.place || ""}</strong>`, true);
   setIfExist("akadAddress", c.event?.akad?.address);
- 
-  // Bagian Ngunduh (Sesuaikan dengan ID di index.html baris 136-141)
+
+  // Detail Ngunduh
   setIfExist("ngunduhTime", `${c.event?.ngunduh?.time || ""} ${tz}`);
   setIfExist("ngunduhPlace", `<strong>${c.event?.ngunduh?.place || ""}</strong>`, true);
   setIfExist("ngunduhAddress", c.event?.ngunduh?.address);
 
   updateMapContent('akad');
-  renderStory(c?.story || []);
-  renderGallery(c?.media?.gallery || []);
-  renderGifts(c?.gift);
-
-  const bgm = $("#bgm");
-  if(bgm && c?.media?.music?.src) bgm.src = c.media.music.src;
-
-  if(c?.gift?.enable === false) $("#gift")?.style.setProperty("display", "none");
-  if(c?.rsvp?.enable === false) $("#rsvp")?.style.setProperty("display", "none");
+  if (typeof renderStory === "function") renderStory(c.story || []);
+  if (typeof renderGallery === "function") renderGallery(c.media?.gallery || []);
+  if (typeof renderGifts === "function") renderGifts(c.gift);
 }
 
-function setGuestName(){
-  const raw = getQueryParam("to");
-  const name = safeText(decodeURIComponent(raw.replace(/\+/g," "))) || "Tamu Undangan";
-  if($("#guestName")) $("#guestName").textContent = name;
-  if($("#guestNameInline")) $("#guestNameInline").textContent = name;
-  
-  const rsvpNameInput = $("#rsvpName");
-  if(rsvpNameInput) rsvpNameInput.value = name !== "Tamu Undangan" ? name : "";
-}
-
-function revealOnScroll(){
-  const els = $$(".reveal");
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add("show");
-    });
-  }, { threshold: 0.12 });
-  els.forEach(el=>io.observe(el));
-}
-
-function startCountdown() {
-  const dateISO = state.config?.event?.dateISO;
-  if (!dateISO) return;
-
-  const target = new Date(dateISO).getTime();
-  
-  const tick = () => {
-    const now = Date.now();
-    let diff = Math.max(0, target - now);
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    diff -= days * (1000 * 60 * 60 * 24);
-    const hrs = Math.floor(diff / (1000 * 60 * 60));
-    diff -= hrs * (1000 * 60 * 60);
-    const mins = Math.floor(diff / (1000 * 60));
-    diff -= mins * (1000 * 60);
-    const secs = Math.floor(diff / 1000);
-
-    if ($("#cdDays")) $("#cdDays").textContent = pad2(days);
-    if ($("#cdHours")) $("#cdHours").textContent = pad2(hrs);
-    if ($("#cdMins")) $("#cdMins").textContent = pad2(mins);
-    if ($("#cdSecs")) $("#cdSecs").textContent = pad2(secs);
-  };
-
-  tick();
-  setInterval(tick, 1000);
-}
-
+// --- FUNGSI KALENDER ---
 function addToCalendar() {
   const c = state.config;
   if (!c) return;
@@ -169,62 +106,47 @@ function addToCalendar() {
   window.open(url, "_blank");
 }
 
-function renderGallery(list){
-  const wrap = $("#galleryGrid");
-  if(!wrap) return;
-  wrap.innerHTML = "";
-  list.forEach((src)=>{
-    const div = document.createElement("div");
-    div.className = "gitem";
-    div.setAttribute("data-full", src);
-    div.innerHTML = `<img src="${src}" alt="Foto" loading="lazy">`;
-    wrap.appendChild(div);
-  });
+function setGuestName(){
+  const raw = getQueryParam("to");
+  const name = safeText(decodeURIComponent(raw.replace(/\+/g," "))) || "Tamu Undangan";
+  setIfExist("guestName", name);
+  setIfExist("guestNameInline", name);
+  const rsvpNameInput = document.getElementById("rsvpName");
+  if(rsvpNameInput) rsvpNameInput.value = name !== "Tamu Undangan" ? name : "";
 }
 
-function renderStory(items){
-  const wrap = $("#storyWrap");
-  if(!wrap) return;
-  wrap.innerHTML = "";
-  items.forEach(it=>{
-    const el = document.createElement("div");
-    el.className = "titem card reveal";
-    el.innerHTML = `<div class="date">${safeText(it.date)}</div><h4>${safeText(it.title)}</h4><p>${safeText(it.text)}</p>`;
-    wrap.appendChild(el);
-  });
+function startCountdown(){
+  const dateISO = state.config?.event?.dateISO;
+  if(!dateISO) return;
+  const target = new Date(dateISO).getTime();
+  const tick = () => {
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const days = Math.floor(diff / (1000*60*60*24)); diff -= days*(1000*60*60*24);
+    const hrs  = Math.floor(diff / (1000*60*60));    diff -= hrs*(1000*60*60);
+    const mins = Math.floor(diff / (1000*60));       diff -= mins*(1000*60);
+    const secs = Math.floor(diff / (1000));
+    setIfExist("cdDays", pad2(days));
+    setIfExist("cdHours", pad2(hrs));
+    setIfExist("cdMins", pad2(mins));
+    setIfExist("cdSecs", pad2(secs));
+  };
+  tick();
+  setInterval(tick, 1000);
 }
 
-function renderGifts(gift){
-  const wrap = $("#giftWrap");
-  if(!wrap) return;
-  wrap.innerHTML = "";
-  if(!gift || gift.enable === false) return;
-  (gift.accounts || []).forEach(acc=>{
-    const card = document.createElement("div");
-    card.className = "card reveal";
-    card.innerHTML = `<h4>${safeText(acc.bank)}</h4><p><strong>${safeText(acc.name)}</strong></p><p class="muted">${safeText(acc.number)}</p><button class="btn btn--sm" onclick="copyToClipboard('${acc.number}')">Salin</button>`;
-    wrap.appendChild(card);
-  });
-}
-
-function copyToClipboard(text){
-  navigator.clipboard.writeText(text).then(() => alert("Berhasil disalin!"));
-}
-
-// --- INISIALISASI UTAMA ---
+// --- INISIALISASI ---
 document.addEventListener("DOMContentLoaded", () => {
   const openBtn = document.getElementById("openBtn");
   const gate = document.getElementById("gate");
 
-  // 1. Logika Buka Gate (Langsung aktif)
   if (openBtn && gate) {
     openBtn.onclick = () => {
       gate.classList.add("gate--hidden");
       const bgm = document.getElementById("bgm");
-      if (bgm) bgm.play().catch(() => console.log("Autoplay blocked"));
+      if (bgm) bgm.play().catch(() => console.log("Audio blocked"));
     };
   }
-
   initInvitation();
 });
 
@@ -233,14 +155,54 @@ async function initInvitation() {
     state.config = await loadConfig();
     applyTheme();
     setGuestName();
-    if (typeof startCountdown === "function") startCountdown();
-    if (typeof revealOnScroll === "function") revealOnScroll();
-    
-    // Aktifkan Tombol Kalender
+    startCountdown();
+    // Reveal On Scroll
+    const els = [...document.querySelectorAll(".reveal")];
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("show"); });
+    }, { threshold: 0.12 });
+    els.forEach(el=>io.observe(el));
+
     const calBtn = document.getElementById("addToCalendar");
     if (calBtn) calBtn.onclick = addToCalendar;
-
   } catch (err) {
-    console.error("Gagal memuat config:", err);
+    console.error("Init Gagal:", err);
   }
+}
+
+// --- RENDERER ---
+function renderGallery(list){
+  const wrap = document.getElementById("galleryGrid");
+  if(!wrap) return;
+  wrap.innerHTML = "";
+  list.forEach(src => {
+    const div = document.createElement("div");
+    div.className = "gitem";
+    div.innerHTML = `<img src="${src}" alt="Foto" loading="lazy">`;
+    wrap.appendChild(div);
+  });
+}
+
+function renderStory(items){
+  const wrap = document.getElementById("storyWrap");
+  if(!wrap) return;
+  wrap.innerHTML = "";
+  items.forEach(it => {
+    const el = document.createElement("div");
+    el.className = "titem card reveal";
+    el.innerHTML = `<div class="date">${it.date}</div><h4>${it.title}</h4><p>${it.text}</p>`;
+    wrap.appendChild(el);
+  });
+}
+
+function renderGifts(gift){
+  const wrap = document.getElementById("giftWrap");
+  if(!wrap || !gift?.enable) return;
+  wrap.innerHTML = "";
+  gift.accounts.forEach(acc => {
+    const card = document.createElement("div");
+    card.className = "card reveal";
+    card.innerHTML = `<h4>${acc.bank}</h4><p><strong>${acc.name}</strong></p><p class="muted">${acc.number}</p><button class="btn btn--sm" onclick="navigator.clipboard.writeText('${acc.number}').then(()=>alert('Tersalin'))">Salin</button>`;
+    wrap.appendChild(card);
+  });
 }
