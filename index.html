@@ -143,42 +143,41 @@
     <section id="event" class="section section--alt">
       <div class="container">
         <h3 class="section__title reveal">Detail Acara</h3>
-
+        <p class="section__desc reveal">Dengan memohon ridho Allah SWT, kami mengundang Anda hadir pada:</p>
+    
         <div class="grid2">
           <!-- Kartu Akad -->
-          <div class="card reveal" onclick="updateMapContent('akad')" style="cursor: pointer">
+          <article class="card reveal" onclick="updateMapContent('akad')">
             <h4>Akad & Resepsi</h4>
             <p class="muted" id="akadTime"></p>
             <p id="akadPlace"></p>
             <p class="muted" id="akadAddress"></p>
-            <small class="btn-link">Klik untuk lihat peta</small>
-          </div>
-          <!-- Kartu Resepsi -->
-          <div class="card reveal" onclick="updateMapContent('ngunduh')" style="cursor: pointer">
+            <span class="btn-link small">📍 Lihat Peta Akad</span>
+          </article>
+    
+          <!-- Kartu Ngunduh Mantu -->
+          <article class="card reveal" onclick="updateMapContent('ngunduh')">
             <h4>Ngunduh Mantu</h4>
             <p class="muted" id="ngunduhTime"></p>
             <p id="ngunduhPlace"></p>
             <p class="muted" id="ngunduhAddress"></p>
-            <small class="btn-link">Klik untuk lihat peta</small>
-          </div>
+            <span class="btn-link small">📍 Lihat Peta Ngunduh</span>
+          </article>
         </div>
-
-        <!-- Area Peta -->
+    
+        <!-- Peta Dinamis -->
         <div class="map card reveal" style="margin-top: 2rem;">
           <div class="map__top">
-            <h4 id="mapTitle">Lokasi Akad</h4> <!-- Judul dinamis -->
+            <h4 id="mapTitle">Lokasi Acara</h4>
             <a id="directionBtn" class="btn btn--primary btn--sm" href="#" target="_blank" rel="noopener">
-          Petunjuk Arah
+              Petunjuk Arah
             </a>
           </div>
           <iframe
             id="mapsFrame"
-            title="Google Maps Lokasi Acara"
+            title="Google Maps"
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-            src="about:blank" 
-            style="width:100%; height:300px; border:0;">
+            src="about:blank">
           </iframe>
         </div>
       </div>
@@ -259,6 +258,7 @@
   <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
