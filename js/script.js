@@ -1,3 +1,9 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(registrations => {
+    for (let registration of registrations) { registration.unregister(); }
+  });
+}
+
 const $ = (s, p=document) => p.querySelector(s);
 const $$ = (s, p=document) => [...p.querySelectorAll(s)];
 
@@ -208,5 +214,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Gagal memuat data, tapi gate tetap bisa dibuka:", err);
   }
 });
+
 
 
