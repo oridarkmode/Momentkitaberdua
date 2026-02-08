@@ -360,12 +360,8 @@ input:focus, select:focus, textarea:focus{
 }
 
 /* Gate */
-.gate{
-  position:fixed;
-  inset:0;
-  z-index: 120;
-  display:grid;
-  place-items:center;
+.gate { z-index: 9999 !important; }
+#openBtn { cursor: pointer !important; position: relative; z-index: 10001 !important; }
 }
 .gate__bg{
   position:absolute;
@@ -375,15 +371,7 @@ input:focus, select:focus, textarea:focus{
               rgba(11,11,16,0.86);
   backdrop-filter: blur(10px);
 }
-.gate__card{
-  width: min(520px, calc(100% - 36px));
-  position:relative;
-  text-align:center;
-  padding: 24px 20px;
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.06);
-  box-shadow: var(--shadow);
+.gate__card { position: relative; z-index: 10000 !important; }
 }
 .gate__badge{
   padding: 6px 12px;
@@ -457,6 +445,7 @@ input:focus, select:focus, textarea:focus{
 }
 }
 ``
+
 
 
 
