@@ -184,24 +184,6 @@ body {
 
 .btn--primary { background: var(--accent); color: #0b0b10 !important; border: none; }
 /* --- Header Glassmorphism --- */
-.header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1500;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  background: rgba(11, 11, 16, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.header__inner {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-
 .logo-center {
   font-family: "Playfair Display", serif;
   font-size: 24px;
@@ -210,6 +192,32 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.logo-center span {
+  color: #ffffff !important;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 70px;
+  z-index: 1500; /* Harus di bawah gate (2000) tapi di atas hero (1) */
+  background: rgba(11, 11, 16, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: block !important; /* Paksa muncul di HP */
+}
+
+.header__inner {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 /* Animasi Musik Berputar */
@@ -230,12 +238,12 @@ body {
 
 /* --- Sidebar Mobile --- */
 .sidebar {
+  z-index: 2100;
+  background: rgba(11, 11, 16, 0.98);
   position: fixed;
   top: 0; left: -280px; /* Sembunyi di kiri */
   width: 280px; height: 100vh;
-  background: rgba(11, 11, 16, 0.95);
   backdrop-filter: blur(20px);
-  z-index: 2001;
   transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
   padding: 80px 30px;
 }
@@ -328,5 +336,6 @@ body {
   html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
+
 
 
