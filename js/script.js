@@ -104,7 +104,6 @@ function applyTheme() {
   if(c?.gift?.enable === false) $("#gift")?.style.setProperty("display", "none");
   if(c?.rsvp?.enable === false) {
     $("#rsvp")?.style.setProperty("display", "none");
-    $("#wishes")?.style.setProperty("display", "none");
   }
 } // Tutup fungsi applyTheme di sini
 
@@ -313,19 +312,6 @@ function wishItem(w){
   return el;
 }
 
-function renderWishes(){
-  const list = readLS(LS_KEYS.WISHES);
-  const wrap = $("#wishList");
-  wrap.innerHTML = "";
-
-  if(!list.length){
-    wrap.innerHTML = `<p class="muted">Belum ada ucapan. Jadilah yang pertama 😊</p>`;
-    return;
-  }
-
-  list.forEach(w => wrap.appendChild(wishItem(w)));
-}
-
 async function submitToEndpoint(payload){
   const { rsvp } = state.config;
   if(!rsvp?.endpointUrl) return { ok:false, message:"Endpoint belum diisi." };
@@ -530,6 +516,7 @@ function registerSW(){
   }
 
 })();
+
 
 
 
