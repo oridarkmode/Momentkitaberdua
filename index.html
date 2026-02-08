@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#C7B8FF" />
+  <title>Undangan Pernikahan</title>
+
+  <meta name="description" content="Undangan pernikahan digital bergaya glassmorphism yang elegan." />
+
+  <!-- Fonts (elegan & serasi) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Ambient blobs -->
+  <div class="ambient" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+    <span class="grain"></span>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgm" preload="auto" loop></audio>
+
+  <!-- COVER / GATE -->
+  <section id="coverGate" class="gate" role="dialog" aria-modal="true">
+    <div class="gate__bg" id="coverBg"></div>
+
+    <div class="gate__card glass">
+      <div class="gate__top">
+        <p class="kicker" id="coverTitleTop">The Wedding Of</p>
+        <h1 class="display" id="coverTitle">Fahri & Alya</h1>
+        <p class="sub" id="coverDateText">Minggu, 16 Agustus 2026</p>
+      </div>
+
+      <div class="gate__mid">
+        <p class="muted">Kepada Yth.</p>
+        <h2 class="guest" id="guestName">Tamu Undangan</h2>
+        <p class="tiny muted">Mohon maaf jika ada kesalahan penulisan nama & gelar.</p>
+      </div>
+
+      <div class="gate__actions">
+        <button id="btnOpen" class="btn btn--primary">
+          <span class="btn__glow" aria-hidden="true"></span>
+          Buka Undangan
+        </button>
+        <button id="btnMuteGate" class="btn btn--ghost" aria-pressed="false">
+          Musik: Off
+        </button>
+      </div>
+
+      <p class="tiny muted" id="coverGreeting">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <header class="navWrap">
+    <div class="navInner glass">
+      <a class="brand" href="#home">
+        <span class="brand__dot"></span>
+        <span id="brandText">Undangan</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#couple">Mempelai</a>
+        <a href="#events">Acara</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#story">Kisah</a>
+        <a href="#gifts">Kado</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#closing">Penutup</a>
+      </nav>
+
+      <div class="navBtns">
+        <button id="btnMute" class="iconBtn" aria-pressed="false" title="Toggle musik">♪</button>
+        <button id="btnTop" class="iconBtn" title="Ke atas">↑</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 2. HOME -->
+    <section id="home" class="section hero">
+      <div class="container">
+        <div class="heroCard glass reveal">
+          <p class="kicker" id="homeGreet">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+          <h2 class="display display--md">
+            <span id="groomNameShort">Fahri</span>
+            <span class="amp">&</span>
+            <span id="brideNameShort">Alya</span>
+          </h2>
+          <p class="sub" id="homeHeadline">
+            Kami mengundang Bapak/Ibu/Saudara/i untuk hadir di hari bahagia kami.
+          </p>
+
+          <div class="metaRow">
+            <span class="pill" id="homeDatePill">Minggu, 16 Agustus 2026</span>
+            <span class="pill" id="homeLocPill">Guntur, Jawa Tengah</span>
+          </div>
+
+          <div class="countdown" aria-label="Hitung mundur">
+            <div class="cdItem"><b id="cdDays">00</b><small>Hari</small></div>
+            <div class="cdItem"><b id="cdHours">00</b><small>Jam</small></div>
+            <div class="cdItem"><b id="cdMins">00</b><small>Menit</small></div>
+            <div class="cdItem"><b id="cdSecs">00</b><small>Detik</small></div>
+          </div>
+
+          <div class="ctaRow">
+            <a class="btn btn--ghost" href="#events">Lihat Detail Acara</a>
+            <button id="btnIcs" class="btn btn--primary">
+              <span class="btn__glow" aria-hidden="true"></span>
+              Simpan ke Kalender
+            </button>
+          </div>
+
+          <p class="tiny muted">Undangan untuk: <b id="guestInline">Tamu Undangan</b></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MEMPELAI -->
+    <section id="couple" class="section">
+      <div class="container">
+        <div class="head reveal">
+          <h3 class="title">Mempelai</h3>
+          <p class="muted">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami.</p>
+        </div>
+
+        <div class="coupleGrid">
+          <article class="coupleCard glass reveal">
+            <img id="bridePhoto" class="coupleImg" src="assets/img/couple-bride.jpg" alt="Foto mempelai wanita">
+            <h4 id="brideName" class="coupleName">Alya Putri</h4>
+            <p id="brideParents" class="muted">Putri dari Bapak ... & Ibu ...</p>
+            <a id="brideIg" class="link" href="#" target="_blank" rel="noopener">Instagram ↗</a>
+          </article>
+
+          <div class="coupleMid reveal" aria-hidden="true">
+            <span class="ring">∞</span>
+          </div>
+
+          <article class="coupleCard glass reveal">
+            <img id="groomPhoto" class="coupleImg" src="assets/img/couple-groom.jpg" alt="Foto mempelai pria">
+            <h4 id="groomName" class="coupleName">Fahri Habsyi</h4>
+            <p id="groomParents" class="muted">Putra dari Bapak ... & Ibu ...</p>
+            <a id="groomIg" class="link" href="#" target="_blank" rel="noopener">Instagram ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ACARA (Akad, Resepsi, Ngunduh Mantu) -->
+    <section id="events" class="section sectionAlt">
+      <div class="container">
+        <div class="head reveal">
+          <h3 class="title">Acara</h3>
+          <p class="muted">Catat waktu dan lokasi acara. Klik “Petunjuk Arah” untuk membuka Google Maps.</p>
+        </div>
+
+        <div id="eventCards" class="eventGrid"></div>
+
+        <div class="note glass reveal">
+          <p class="muted small">
+            <b>Tips:</b> Aktifkan tombol musik agar pengalaman undangan terasa lebih hidup ✨
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. GALERI (foto + video) -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="head reveal">
+          <h3 class="title">Galeri</h3>
+          <p class="muted">Klik foto untuk melihat lebih besar. Video bisa diputar dari tab video.</p>
+        </div>
+
+        <div class="tabs reveal">
+          <button class="tab isActive" data-tab="photos">Foto</button>
+          <button class="tab" data-tab="videos">Video</button>
+        </div>
+
+        <div id="galleryPhotos" class="galleryGrid reveal"></div>
+
+        <div id="galleryVideos" class="videoGrid reveal" hidden></div>
+      </div>
+
+      <!-- Photo modal -->
+      <div id="photoModal" class="modal" aria-hidden="true">
+        <button class="modal__close" id="photoClose" aria-label="Tutup">×</button>
+        <img id="photoFull" alt="Foto galeri" />
+      </div>
+
+      <!-- Video modal -->
+      <div id="videoModal" class="modal" aria-hidden="true">
+        <button class="modal__close" id="videoClose" aria-label="Tutup">×</button>
+        <video id="videoPlayer" controls playsinline></video>
+      </div>
+    </section>
+
+    <!-- 6. KISAH CINTA -->
+    <section id="story" class="section sectionAlt">
+      <div class="container">
+        <div class="head reveal">
+          <h3 class="title">Kisah Cinta</h3>
+          <p class="muted">Perjalanan singkat yang membawa kami sampai di hari ini.</p>
+        </div>
+
+        <div id="storyWrap" class="timeline"></div>
+      </div>
+    </section>
+
+    <!-- 7. KADO DIGITAL (3 opsi) -->
+    <section id="gifts" class="section">
+      <div class="container">
+        <div class="head reveal">
+          <h3 class="title">Kado Digital</h3>
+          <p class="muted">Doa restu adalah hadiah terbaik. Jika ingin mengirim kado, kamu bisa memilih opsi berikut.</p>
+        </div>
+
+        <div id="giftWrap" class="giftGrid"></div>
+      </div>
+    </section>
+
+    <!-- 8. RSVP & UCAPAN -->
+    <section id="rsvp" class="section sectionAlt">
+      <div class="container">
+        <div class="head reveal">
+          <h3 class="title">RSVP & Ucapan</h3>
+          <p class="muted">Konfirmasi kehadiranmu sangat berarti. Jangan lupa tulis ucapan terbaik ya.</p>
+        </div>
+
+        <div class="rsvpGrid">
+          <form id="rsvpForm" class="glass reveal">
+            <h4 class="cardTitle">RSVP</h4>
+
+            <label class="field">
+              <span>Nama</span>
+              <input id="rsvpName" type="text" maxlength="60" required placeholder="Nama kamu" />
+            </label>
+
+            <label class="field">
+              <span>Kehadiran</span>
+              <select id="rsvpAttend" required>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option value="Masih Ragu">Masih Ragu</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Jumlah Tamu (Pax)</span>
+              <input id="rsvpPax" type="number" min="1" max="5" value="1" required />
+            </label>
+
+            <label class="field">
+              <span>Pesan Singkat</span>
+              <textarea id="rsvpMsg" rows="3" maxlength="200" placeholder="Tulis pesan..."></textarea>
+            </label>
+
+            <button class="btn btn--primary" type="submit">
+              <span class="btn__glow" aria-hidden="true"></span>
+              Kirim RSVP
+            </button>
+
+            <p id="rsvpNote" class="tiny muted" style="margin-top:10px"></p>
+          </form>
+
+          <div class="glass reveal">
+            <h4 class="cardTitle">Statistik</h4>
+            <div class="stats">
+              <div class="stat"><b id="statTotal">0</b><small>Total</small></div>
+              <div class="stat"><b id="statHadir">0</b><small>Hadir</small></div>
+              <div class="stat"><b id="statTidak">0</b><small>Tidak</small></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h4 class="cardTitle">Ucapan</h4>
+            <form id="wishForm" class="wishForm">
+              <label class="field">
+                <span>Nama</span>
+                <input id="wishName" type="text" maxlength="60" required placeholder="Nama kamu" />
+              </label>
+              <label class="field">
+                <span>Ucapan</span>
+                <input id="wishText" type="text" maxlength="160" required placeholder="Selamat ya..." />
+              </label>
+              <button class="btn btn--ghost" type="submit">Kirim Ucapan</button>
+              <p class="tiny muted">Mode statis: tersimpan di browser (localStorage).</p>
+            </form>
+
+            <div id="wishList" class="wishList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. PENUTUP -->
+    <section id="closing" class="section">
+      <div class="container">
+        <div class="closing glass reveal">
+          <h3 class="title" id="closingTitle">Terima Kasih</h3>
+          <p class="muted" id="closingDesc">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+          </p>
+
+          <p class="muted small">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+          <div class="closingNames">
+            <span id="closingBride">Alya</span>
+            <span class="amp">&</span>
+            <span id="closingGroom">Fahri</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 10. FOOTER -->
+  <footer class="footer">
+    <div class="container footerInner">
+      <p class="tiny muted">© <span id="yearNow"></span> <b id="footerBrand">Brand</b> — All rights reserved.</p>
+      <p class="tiny muted">Template: Glassmorphism Elegant Invitation</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

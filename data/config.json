@@ -1,0 +1,134 @@
+{
+  "brand": "FahriHabsyi Studio",
+  "siteTitle": "Undangan Pernikahan",
+  "theme": {
+    "accent": "#C7B8FF",
+    "accent2": "#7CF7D4",
+    "bg": "#07060C"
+  },
+  "guest": {
+    "paramName": "to",
+    "defaultName": "Tamu Undangan"
+  },
+  "cover": {
+    "titleTop": "The Wedding Of",
+    "title": "Fahri & Alya",
+    "dateText": "Minggu, 16 Agustus 2026",
+    "coverImage": "assets/img/cover.jpg",
+    "greeting": "Assalamu’alaikum Warahmatullahi Wabarakatuh"
+  },
+  "home": {
+    "headline": "Kami mengundang Bapak/Ibu/Saudara/i untuk hadir di hari bahagia kami.",
+    "locationText": "Guntur, Jawa Tengah",
+    "eventISO": "2026-08-16T09:00:00+07:00",
+    "timezone": "WIB"
+  },
+  "couple": {
+    "bride": {
+      "name": "Alya Putri",
+      "parents": "Putri dari Bapak ... & Ibu ...",
+      "photo": "assets/img/couple-bride.jpg",
+      "instagram": "https://instagram.com/"
+    },
+    "groom": {
+      "name": "Fahri Habsyi",
+      "parents": "Putra dari Bapak ... & Ibu ...",
+      "photo": "assets/img/couple-groom.jpg",
+      "instagram": "https://instagram.com/"
+    }
+  },
+  "events": [
+    {
+      "type": "Akad Nikah",
+      "dateText": "Minggu, 16 Agustus 2026",
+      "timeText": "09.00 - 10.00 WIB",
+      "place": "Masjid ...",
+      "address": "Jl. ... No. ..., Guntur",
+      "mapEmbed": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
+      "mapDirection": "https://maps.google.com/?q=-6.200000,106.816666"
+    },
+    {
+      "type": "Resepsi",
+      "dateText": "Minggu, 16 Agustus 2026",
+      "timeText": "11.00 - 14.00 WIB",
+      "place": "Gedung Serbaguna Bahagia",
+      "address": "Jl. ... No. ..., Guntur",
+      "mapEmbed": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
+      "mapDirection": "https://maps.google.com/?q=-6.200000,106.816666"
+    },
+    {
+      "type": "Ngunduh Mantu",
+      "dateText": "Minggu, 23 Agustus 2026",
+      "timeText": "10.00 - 13.00 WIB",
+      "place": "Kediaman Mempelai Pria",
+      "address": "Jl. ... No. ..., Guntur",
+      "mapEmbed": "https://www.google.com/maps?q=-6.200000,106.816666&output=embed",
+      "mapDirection": "https://maps.google.com/?q=-6.200000,106.816666"
+    }
+  ],
+  "gallery": {
+    "photos": [
+      "assets/img/gallery-1.jpg",
+      "assets/img/gallery-2.jpg",
+      "assets/img/gallery-3.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Prewedding Film",
+        "src": "assets/video/prewedding.mp4",
+        "poster": "assets/img/gallery-1.jpg"
+      }
+    ]
+  },
+  "story": [
+    {
+      "year": "2022",
+      "title": "Pertama Bertemu",
+      "desc": "Kami dipertemukan di ..."
+    },
+    {
+      "year": "2024",
+      "title": "Lamaran",
+      "desc": "Dengan restu keluarga ..."
+    },
+    {
+      "year": "2026",
+      "title": "Hari Bahagia",
+      "desc": "Kami memutuskan untuk melangkah bersama."
+    }
+  ],
+  "gifts": {
+    "enabled": true,
+    "options": [
+      {
+        "label": "Transfer Bank (BCA)",
+        "name": "Fahri Habsyi",
+        "value": "1234567890"
+      },
+      {
+        "label": "E-Wallet (DANA)",
+        "name": "Alya Putri",
+        "value": "081234567890"
+      },
+      {
+        "label": "Alamat Kado",
+        "name": "Rumah",
+        "value": "Jl. ... No. ..., Guntur"
+      }
+    ]
+  },
+  "music": {
+    "src": "assets/audio/song.mp3",
+    "startMuted": true
+  },
+  "rsvp": {
+    "enabled": true,
+    "maxPax": 5,
+    "mode": "localStorage",
+    "endpointUrl": ""
+  },
+  "closing": {
+    "title": "Terima Kasih",
+    "desc": "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu."
+  }
+}
