@@ -183,6 +183,86 @@ body {
 }
 
 .btn--primary { background: var(--accent); color: #0b0b10 !important; border: none; }
+/* --- Header Glassmorphism --- */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1500;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(11, 11, 16, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header__inner {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo-center {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Animasi Musik Berputar */
+.rotate {
+  display: inline-block;
+  animation: spin 3s linear infinite;
+  animation-play-state: paused; /* Berhenti saat musik off */
+}
+
+.playing .rotate {
+  animation-play-state: running; /* Berputar saat musik on */
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Sidebar Mobile --- */
+.sidebar {
+  position: fixed;
+  top: 0; left: -280px; /* Sembunyi di kiri */
+  width: 280px; height: 100vh;
+  background: rgba(11, 11, 16, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 2001;
+  transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  padding: 80px 30px;
+}
+
+.sidebar.active { left: 0; }
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 2000;
+}
+
+.sidebar__nav { display: flex; flex-direction: column; gap: 25px; }
+.nav-link { font-size: 18px; font-weight: 500; color: var(--muted); transition: 0.3s; }
+.nav-link:hover { color: var(--accent); padding-left: 10px; }
+
+/* --- Hero Glass Card --- */
+.hero__content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 60px 30px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  max-width: 90%;
+}
 
 /* --- Countdown --- */
 .countdown { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
@@ -248,4 +328,5 @@ body {
   html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
+
 
