@@ -25,55 +25,44 @@
   <!-- Cover / Gate -->
   <div id="gate" class="gate">
     <div class="gate__bg"></div>
-    
     <div class="gate__card reveal">
       <p class="gate__badge">Undangan Pernikahan</p>
       <h1 class="gate__title"><span id="brandText">K & N</span></h1>
-
       <div class="gate__to">
         <p class="gate__subtitle small muted">Kepada Yth. Bapak/Ibu/Saudara/i</p>
         <h2 class="gate__guest" id="guestName">Tamu Undangan</h2>
       </div>
-
       <p class="gate__hint small">Mohon maaf apabila ada kesalahan penulisan nama & gelar.</p>
-
       <div class="gate__actions">
         <button id="openBtn" class="btn btn--primary" type="button">
           <span class="icon">✉</span> Buka Undangan
         </button>
       </div>
+    </div> 
+  </div> 
 
-      <!-- Tombol musik diletakkan di dalam card agar ikut terpusat -->
-      <button id="muteBtnGate" class="btn btn--ghost btn--sm" type="button">
-        Musik: Off
-      </button>
-    </div> <!-- PENUTUP gate__card yang benar -->
-  </div> <!-- PENUTUP gate yang benar -->
-
-  <!-- WAJIB: Tambahkan tag audio di sini (di luar gate) -->
+  <!-- Audio Element -->
   <audio id="bgm" loop preload="auto"></audio>
 
   <!-- Header Fixed -->
   <header class="header">
     <div class="header__inner">
-      <!-- KIRI: Tombol Menu (Sidebar) -->
+      <!-- KIRI: Menu -->
       <button id="menuBtn" class="icon-btn" aria-label="Buka Menu">
         <span class="icon">☰</span>
       </button>
-  
-      <!-- TENGAH: Logo Brand -->
+      <!-- TENGAH: Logo -->
       <a class="logo-center" href="#home">
         <span id="logoBrand">K & K</span>
       </a>
-  
-      <!-- KANAN: Tombol Musik -->
-      <button id="muteBtn" class="icon-btn" type="button" aria-pressed="false">
-        <span class="icon rotate">♪</span> <!-- Class rotate ditambahkan di CSS -->
+      <!-- KANAN: Musik -->
+      <button id="muteBtn" class="icon-btn" type="button">
+        <span class="icon rotate">♪</span>
       </button>
     </div>
   </header>
   
-  <!-- Navigasi Samping (Sidebar) -->
+  <!-- Sidebar & Overlay -->
   <div id="sideNav" class="sidebar">
     <button id="closeMenu" class="sidebar__close">&times;</button>
     <nav class="sidebar__nav">
@@ -89,9 +78,7 @@
   </div>
   <div id="navOverlay" class="nav-overlay"></div>
 
-  <!-- Main -->
   <main id="home">
-    <!-- Hero -->
     <section class="hero section">
       <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
 
@@ -270,6 +257,7 @@
   <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
