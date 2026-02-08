@@ -10,6 +10,11 @@
     "paramName": "to",
     "defaultName": "Tamu Undangan"
   },
+  "backgrounds": {
+  "cover": "assets/img/bg-cover.jpg",
+  "home": "assets/img/bg-home.jpg",
+  "closing": "assets/img/bg-closing.jpg"
+  },
   "cover": {
     "titleTop": "The Wedding Of",
     "title": "Fahri & Alya",
@@ -131,4 +136,5 @@
     "title": "Terima Kasih",
     "desc": "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu."
   }
+
 }
