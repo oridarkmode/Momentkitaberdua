@@ -131,22 +131,53 @@ function revealOnScroll(){
   els.forEach(el=>io.observe(el));
 }
 
-function startCountdown(){
-  const target = new Date(state.config?.event?.dateISO).getTime();
+function startCountdown() {
+  const dateISO = state.config?.event?.dateISO;
+  if (!dateISO) return;
+
+  const target = new Date(dateISO).getTime();
+  
   const tick = () => {
     const now = Date.now();
     let diff = Math.max(0, target - now);
-    const days = Math.floor(diff / (1000*60*60*24)); diff -= days*(1000*60*60*24);
-    const hrs  = Math.floor(diff / (1000*60*60));    diff -= hrs*(1000*60*60);
-    const mins = Math.floor(diff / (1000*60));       diff -= mins*(1000*60);
-    const secs = Math.floor(diff / (1000));
-    $("#cdDays").textContent = pad2(days);
-    $("#cdHours").textContent = pad2(hrs);
-    $("#cdMins").textContent = pad2(mins);
-    $("#cdSecs").textContent = pad2(secs);
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff -= days * (1000 * 60 * 60 * 24);
+    const hrs = Math.floor(diff / (1000 * 60 * 60));
+    diff -= hrs * (1000 * 60 * 60);
+    const mins = Math.floor(diff / (1000 * 60));
+    diff -= mins * (1000 * 60);
+    const secs = Math.floor(diff / 1000);
+
+    if ($("#cdDays")) $("#cdDays").textContent = pad2(days);
+    if ($("#cdHours")) $("#cdHours").textContent = pad2(hrs);
+    if ($("#cdMins")) $("#cdMins").textContent = pad2(mins);
+    if ($("#cdSecs")) $("#cdSecs").textContent = pad2(secs);
   };
+
   tick();
   setInterval(tick, 1000);
+}
+
+function addToCalendar() {
+  const c = state.config;
+  if (!c) return;
+
+  const summary = encodeURIComponent(`Pernikahan ${c.couple.groom.short} & ${c.couple.bride.short}`);
+  const location = encodeURIComponent(`${c.event.akad.place}, ${c.event.akad.address}`);
+  
+  // Format deskripsi dengan data Ngunduh Mantu yang baru
+  const desc = encodeURIComponent(
+    `Akad: ${c.event.akad.time} - ${c.event.akad.place}\n` +
+    `Ngunduh Mantu: ${c.event.ngunduh.time} - ${c.event.ngunduh.place}`
+  );
+
+  // Format tanggal ISO ke format Google Calendar (YYYYMMDDTHHmmSSZ)
+  const dateStr = c.event.dateISO.replace(/[-:]/g, "").split(".")[0] + "Z";
+  
+  const googleUrl = `https://calendar.google.com{summary}&dates=${dateStr}/${dateStr}&details=${desc}&location=${location}`;
+
+  window.open(googleUrl, "_blank");
 }
 
 function renderGallery(list){
@@ -197,17 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const openBtn = document.getElementById("openBtn");
   const bgm = document.getElementById("bgm");
 
-  // SEGERA aktifkan tombol buka tanpa menunggu data JSON selesai dimuat
+  // 1. Logika Buka Gate (Langsung aktif)
   if (openBtn && gate) {
-    openBtn.addEventListener("click", () => {
+    openBtn.onclick = () => {
       gate.classList.add("gate--hidden");
-      if (bgm) {
-        bgm.play().catch(() => console.log("Autoplay blocked by mobile browser"));
-      }
-    });
+      if (bgm) bgm.play().catch(() => console.log("Autoplay blocked"));
+    };
   }
 
-  // Baru jalankan pemuatan data lainnya
+  // 2. Jalankan pemuatan data
   initInvitation();
 });
 
@@ -219,10 +248,25 @@ async function initInvitation() {
     startCountdown();
     revealOnScroll();
     if (typeof wireLightbox === "function") wireLightbox();
+
+    // 3. AKTIFKAN TOMBOL KALENDER (Penting!)
+    const calBtn = document.getElementById("addToCalendar");
+    if (calBtn) {
+      calBtn.onclick = () => {
+        const c = state.config;
+        const summary = `Pernikahan ${c.couple.groom.short} & ${c.couple.bride.short}`;
+        const location = `${c.event.akad.place}, ${c.event.akad.address}`;
+        const desc = `Akad: ${c.event.akad.time}\nNgunduh: ${c.event.ngunduh.time}`;
+        
+        // Format tanggal untuk Google Calendar
+        const dateStr = c.event.dateISO.replace(/[-:]/g, "").split(".")[0] + "Z";
+        const url = `https://calendar.google.com{encodeURIComponent(summary)}&dates=${dateStr}/${dateStr}&details=${encodeURIComponent(desc)}&location=${encodeURIComponent(location)}`;
+        
+        window.open(url, "_blank");
+      };
+    }
+
   } catch (err) {
     console.error("Gagal memuat config:", err);
   }
 }
-
-
-
