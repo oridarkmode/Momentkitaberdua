@@ -148,9 +148,9 @@
   "sheet": {
     "enabled": true,
     "mode": "appsScript",
-    "postEndpoint": "ISI_DENGAN_URL_WEB_APP_APPS_SCRIPT",
+    "postEndpoint": "https://script.google.com/macros/s/AKfycbyiCS95xf1x0XLjuwpRCPjw6xaVx-9bvMV6_YhRfZHnDA2Tcl9Wxi0yQxqs8gQ7rVv2/exec",
     "readMode": "gviz",
-    "spreadsheetId": "ISI_ID_SHEET",
+    "spreadsheetId": "https://docs.google.com/spreadsheets/d/1ycqS4eo1q3nHhcgX_v1sVsYQNpkV-BKsCb6j-gO8WLk/edit?usp=sharing",
     "sheetName": "Wishes"
   },
   "closing": {
@@ -158,3 +158,4 @@
     "desc": "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu."
   }
 }
+
