@@ -192,7 +192,26 @@ function copyToClipboard(text){
 }
 
 // --- INISIALISASI UTAMA ---
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const gate = document.getElementById("gate");
+  const openBtn = document.getElementById("openBtn");
+  const bgm = document.getElementById("bgm");
+
+  // SEGERA aktifkan tombol buka tanpa menunggu data JSON selesai dimuat
+  if (openBtn && gate) {
+    openBtn.addEventListener("click", () => {
+      gate.classList.add("gate--hidden");
+      if (bgm) {
+        bgm.play().catch(() => console.log("Autoplay blocked by mobile browser"));
+      }
+    });
+  }
+
+  // Baru jalankan pemuatan data lainnya
+  initInvitation();
+});
+
+async function initInvitation() {
   try {
     state.config = await loadConfig();
     applyTheme();
@@ -200,35 +219,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     startCountdown();
     revealOnScroll();
     if (typeof wireLightbox === "function") wireLightbox();
-
-    // LOGIKA TOMBOL BUKA (Hanya jalan saat diklik)
-    const openBtn = document.getElementById("openBtn");
-    const gate = document.getElementById("gate");
-    
-    if (openBtn && gate) {
-      openBtn.onclick = function() {
-        gate.classList.add("gate--hidden"); // Membuka cover
-        const bgm = document.getElementById("bgm");
-        if (bgm) bgm.play().catch(() => console.log("Autoplay blocked"));
-      };
-    }
-
-    // Tombol Musik (Toggle On/Off)
-    const muteBtn = document.getElementById("muteBtn");
-    if (muteBtn) {
-      muteBtn.onclick = () => {
-        const bgm = document.getElementById("bgm");
-        if (bgm.paused) {
-          bgm.play();
-          muteBtn.innerHTML = '<span class="icon">♪</span>';
-        } else {
-          bgm.pause();
-          muteBtn.innerHTML = '<span class="icon"><s>♪</s></span>';
-        }
-      };
-    }
   } catch (err) {
-    console.error("Gagal memuat data:", err);
+    console.error("Gagal memuat config:", err);
   }
-});
+}
+
+
 
