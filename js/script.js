@@ -187,45 +187,26 @@ function copyToClipboard(text){
 
 // --- INISIALISASI UTAMA ---
 document.addEventListener("DOMContentLoaded", async () => {
+  // Fungsi Buka Gate (Jalur Darurat)
+  const openBtn = document.getElementById("openBtn");
+  const gate = document.getElementById("gate");
+  if (openBtn && gate) {
+    openBtn.onclick = () => {
+      gate.classList.add("gate--hidden");
+      const bgm = document.getElementById("bgm");
+      if (bgm) bgm.play().catch(() => console.log("Autoplay blocked"));
+    };
+  }
+
   try {
     state.config = await loadConfig();
     applyTheme();
     setGuestName();
     startCountdown();
     revealOnScroll();
-    if (typeof wireLightbox === "function") wireLightbox(); // Tambahkan ini
-    
-    // Wire Gate
-    const openBtn = $("#openBtn");
-    if(openBtn) {
-      openBtn.addEventListener("click", () => {
-        const gate = $("#gate");
-        if (gate) gate.classList.add("gate--hidden");
-        const bgm = $("#bgm");
-        if(bgm) bgm.play().catch(() => console.log("Autoplay ditangguhkan browser"));
-      });
-    }
-
-    // Tombol Musik Toggle
-    const muteBtn = $("#muteBtn");
-    if (muteBtn) {
-      muteBtn.addEventListener("click", () => {
-        const bgm = $("#bgm");
-        if (!bgm) return;
-        if (bgm.paused) {
-          bgm.play();
-          muteBtn.innerHTML = '<span class="icon">♪</span>';
-        } else {
-          bgm.pause();
-          muteBtn.innerHTML = '<span class="icon"><s>♪</s></span>';
-        }
-      });
-    }
-
   } catch (err) {
-    console.error("Inisialisasi Gagal:", err);
-    // Jika gagal load config, pastikan gate tetap bisa dibuka manual
-    $("#openBtn")?.addEventListener("click", () => $("#gate")?.classList.add("gate--hidden"));
+    console.error("Gagal memuat data, tapi gate tetap bisa dibuka:", err);
   }
 });
+
 
