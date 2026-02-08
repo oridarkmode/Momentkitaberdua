@@ -197,3 +197,69 @@ body {
   html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
+/* =========================================================
+   Mobile Optimization (HP Precision)
+========================================================= */
+
+@media (max-width: 600px) {
+  /* 1. Kurangi padding section agar tidak terlalu banyak ruang kosong */
+  .section { padding: 48px 0; }
+
+  /* 2. Hero: Kecilkan teks judul agar tidak pecah baris berantakan */
+  .hero__title { 
+    font-size: 38px !important; 
+    line-height: 1.2; 
+    margin-bottom: 15px;
+  }
+  
+  /* 3. Countdown: Buat kotak lebih kecil & pas di layar HP */
+  .countdown { gap: 8px; }
+  .countdown__item {
+    min-width: 65px;
+    padding: 8px 5px;
+  }
+  .countdown__item span { font-size: 18px; }
+  .countdown__item small { font-size: 10px; }
+
+  /* 4. Couple: Pastikan foto mempelai tidak terlalu besar & margin rapi */
+  .couple { 
+    grid-template-columns: 1fr; 
+    gap: 30px; 
+    max-width: 280px; 
+    margin-inline: auto; 
+  }
+  .ring { display: none; } /* Simbol infinity sering mengganggu di HP */
+
+  /* 5. Grid Acara: Pastikan kartu Akad & Ngunduh Mantu tumpuk vertikal */
+  .grid2 { 
+    grid-template-columns: 1fr !important; 
+    gap: 15px; 
+  }
+  .card { padding: 15px; }
+
+  /* 6. Peta: Sesuaikan tinggi agar tidak memenuhi layar saat scroll */
+  #mapsFrame { height: 250px; }
+
+  /* 7. Gallery: Buat 2 kolom yang presisi */
+  .gallery { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 8px; 
+  }
+  .gitem img { height: 160px; }
+
+  /* 8. Gate (Cover): Pastikan kartu pas di layar kecil */
+  .gate__card {
+    width: 85%;
+    padding: 2.5rem 1.5rem;
+    gap: 1rem;
+  }
+  .gate__title { font-size: 32px; }
+  .gate__guest { font-size: 20px; }
+
+  /* 9. Tombol: Buat sedikit lebih kecil agar pas */
+  .btn { padding: 10px 20px; font-size: 13px; }
+  
+  /* 10. Hilangkan Navigasi Header di HP agar layar bersih */
+  .header { display: none; } 
+}
+
