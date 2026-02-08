@@ -65,6 +65,13 @@ a{ color:inherit; text-decoration:none; }
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+#openBtn {
+  position: relative;
+  z-index: 9999 !important;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; /* Hilangkan kotak biru saat diklik di HP */
+}
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -457,6 +464,7 @@ input:focus, select:focus, textarea:focus{
 }
 }
 ``
+
 
 
 
