@@ -352,20 +352,6 @@ input:focus, select:focus, textarea:focus{
 .stats strong{ display:block; font-size: 26px; }
 .stats span{ color: var(--muted); font-weight: 700; font-size: 12px; }
 
-.wishlist{
-  display:grid;
-  gap: 10px;
-  margin-top: 12px;
-}
-.wish{
-  padding: 12px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.04);
-}
-.wish b{ display:block; }
-.wish p{ margin: 6px 0 0; color: var(--muted); }
-
 .footer{
   margin-top: 34px;
   padding-top: 18px;
@@ -471,6 +457,7 @@ input:focus, select:focus, textarea:focus{
 }
 }
 ``
+
 
 
 
