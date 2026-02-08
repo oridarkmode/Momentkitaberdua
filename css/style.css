@@ -64,35 +64,108 @@ body {
   gap: 20px;
 }
 
-/* --- Gate (Cover) --- */
+/* --- Gate / Cover Full Design --- */
 .gate {
   position: fixed;
   inset: 0;
   z-index: 2000;
   display: grid;
   place-items: center;
-  background: var(--bg);
-  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s;
+  background: var(--bg); /* Fallback warna gelap */
+  overflow: hidden;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s;
 }
 
-.gate--hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+.gate--hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
 
+/* Background Mewah */
+.gate__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/img/hero.jpg'); /* Pakai coverImage dari config */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3) blur(3px); /* Efek gelap & bokeh agar teks terbaca */
+  transform: scale(1.1);
+}
+
+.gate__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(11,11,16,0.8), var(--bg));
+}
+
+/* Kartu Cover Presisi */
 .gate__card {
   position: relative;
   display: grid;
   place-items: center;
   text-align: center;
-  gap: 1.2rem;
-  padding: 3rem 2rem;
-  width: min(420px, 90%);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  width: min(420px, 88%);
+  padding: 3.5rem 2rem;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
 }
 
-.gate__title { font-family: "Playfair Display", serif; font-size: 42px; margin: 0; }
-.gate__guest { color: var(--accent); font-size: 24px; margin: 5px 0; }
+.gate__badge {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
+.gate__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 10vw, 56px); /* Ukuran font dinamis */
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.gate__to {
+  margin: 0.5rem 0;
+}
+
+.gate__subtitle {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.gate__guest {
+  font-size: clamp(22px, 5vw, 28px);
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.gate__hint {
+  font-size: 11px;
+  max-width: 250px;
+  line-height: 1.5;
+}
+
+/* Tombol Buka Khusus Cover */
+#openBtn {
+  min-width: 180px;
+  font-size: 15px;
+  box-shadow: 0 10px 20px var(--accent-glow);
+}
 
 /* --- Buttons --- */
 .btn {
@@ -175,3 +248,4 @@ body {
   html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
+
