@@ -435,6 +435,16 @@ input:focus, select:focus, textarea:focus{
     animation: fadeIn 0.5s forwards;
 }
 
+#thanks {
+  padding: 80px 0;
+  background-color: var(--accent-light, #f3f4f6); /* Warna lembut */
+  text-align: center;
+}
+#thanks .hero__title {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent);
+}
+
 /* Responsive */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -461,6 +471,7 @@ input:focus, select:focus, textarea:focus{
 }
 }
 ``
+
 
 
 
